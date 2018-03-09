@@ -1,8 +1,8 @@
 <?php
 
-namespace Happy\UserMan;
+namespace Happy\ThreadMan;
 
-class UserMan {
+class ThreadMan {
 
     /**
      * The Laravel application instance.

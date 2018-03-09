@@ -1,6 +1,6 @@
 <?php
 
-namespace Happy\UserMan;
+namespace Happy\ThreadMan;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -18,8 +18,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(UserMan::class, function ($app) {
-            return new UserMan($app);
+        $this->app->singleton(ThreadMan::class, function ($app) {
+            return new ThreadMan($app);
         });
     }
     
@@ -55,6 +55,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function provides()
     {
-        return [UserMan::class];
+        return [ThreadMan::class];
     }
 }

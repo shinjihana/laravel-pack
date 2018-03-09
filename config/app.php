@@ -160,6 +160,7 @@ return [
          * Import myself package system
         */
         Happy\UserMan\ServiceProvider::class,
+        Happy\ThreadMan\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -219,6 +220,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'UserMan'   => Happy\UserMan\Facade::class,
+        'ThreadMan' => Happy\ThreadMan\Facade::class,
     ],
 
 ];
