@@ -156,6 +156,10 @@ return [
          */
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        /**
+         * Import myself package system
+        */
+        Happy\UserMan\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -214,6 +218,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'UserMan'   => Happy\UserMan\Facade::class,
     ],
 
 ];

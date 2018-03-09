@@ -83,6 +83,10 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         array (
             'Illuminate\\' => 11,
         ),
+        'H' => 
+        array (
+            'Happy\\' => 6,
+        ),
         'F' => 
         array (
             'Fideloper\\Proxy\\' => 16,
@@ -237,6 +241,10 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'Happy\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/happy',
         ),
         'Fideloper\\Proxy\\' => 
         array (
@@ -1054,6 +1062,9 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Happy\\UserMan\\Facade' => __DIR__ . '/../..' . '/happy/user-man/Facade.php',
+        'Happy\\UserMan\\ServiceProvider' => __DIR__ . '/../..' . '/happy/user-man/ServiceProvider.php',
+        'Happy\\UserMan\\UserMan' => __DIR__ . '/../..' . '/happy/user-man/UserMan.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',
