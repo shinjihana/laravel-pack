@@ -1555,61 +1555,6 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "nesbot/carbon",
-        "version": "1.23.0",
-        "version_normalized": "1.23.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
-            "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0",
-            "symfony/translation": "~2.6 || ~3.0 || ~4.0"
-        },
-        "require-dev": {
-            "friendsofphp/php-cs-fixer": "~2",
-            "phpunit/phpunit": "^4.8.35 || ^5.7"
-        },
-        "time": "2018-02-28 09:22:05",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.23-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Carbon\\": "src/Carbon/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Brian Nesbitt",
-                "email": "brian@nesbot.com",
-                "homepage": "http://nesbot.com"
-            }
-        ],
-        "description": "A simple API extension for DateTime.",
-        "homepage": "http://carbon.nesbot.com",
-        "keywords": [
-            "date",
-            "datetime",
-            "time"
-        ]
-    },
-    {
         "name": "monolog/monolog",
         "version": "1.23.0",
         "version_normalized": "1.23.0.0",
@@ -1773,146 +1718,6 @@
             "s3",
             "sftp",
             "storage"
-        ]
-    },
-    {
-        "name": "laravel/framework",
-        "version": "v5.6.9",
-        "version_normalized": "5.6.9.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/laravel/framework.git",
-            "reference": "98fdbb098cf52a74441fe949be121c18e3dbbe6a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/98fdbb098cf52a74441fe949be121c18e3dbbe6a",
-            "reference": "98fdbb098cf52a74441fe949be121c18e3dbbe6a",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/inflector": "~1.1",
-            "dragonmantank/cron-expression": "~2.0",
-            "erusev/parsedown": "~1.7",
-            "ext-mbstring": "*",
-            "ext-openssl": "*",
-            "league/flysystem": "~1.0",
-            "monolog/monolog": "~1.12",
-            "nesbot/carbon": "^1.22.1",
-            "php": "^7.1.3",
-            "psr/container": "~1.0",
-            "psr/simple-cache": "^1.0",
-            "ramsey/uuid": "^3.7",
-            "swiftmailer/swiftmailer": "~6.0",
-            "symfony/console": "~4.0",
-            "symfony/debug": "~4.0",
-            "symfony/finder": "~4.0",
-            "symfony/http-foundation": "~4.0",
-            "symfony/http-kernel": "~4.0",
-            "symfony/process": "~4.0",
-            "symfony/routing": "~4.0",
-            "symfony/var-dumper": "~4.0",
-            "tijsverkoyen/css-to-inline-styles": "^2.2.1",
-            "vlucas/phpdotenv": "~2.2"
-        },
-        "conflict": {
-            "tightenco/collect": "<5.5.33"
-        },
-        "replace": {
-            "illuminate/auth": "self.version",
-            "illuminate/broadcasting": "self.version",
-            "illuminate/bus": "self.version",
-            "illuminate/cache": "self.version",
-            "illuminate/config": "self.version",
-            "illuminate/console": "self.version",
-            "illuminate/container": "self.version",
-            "illuminate/contracts": "self.version",
-            "illuminate/cookie": "self.version",
-            "illuminate/database": "self.version",
-            "illuminate/encryption": "self.version",
-            "illuminate/events": "self.version",
-            "illuminate/filesystem": "self.version",
-            "illuminate/hashing": "self.version",
-            "illuminate/http": "self.version",
-            "illuminate/log": "self.version",
-            "illuminate/mail": "self.version",
-            "illuminate/notifications": "self.version",
-            "illuminate/pagination": "self.version",
-            "illuminate/pipeline": "self.version",
-            "illuminate/queue": "self.version",
-            "illuminate/redis": "self.version",
-            "illuminate/routing": "self.version",
-            "illuminate/session": "self.version",
-            "illuminate/support": "self.version",
-            "illuminate/translation": "self.version",
-            "illuminate/validation": "self.version",
-            "illuminate/view": "self.version"
-        },
-        "require-dev": {
-            "aws/aws-sdk-php": "~3.0",
-            "doctrine/dbal": "~2.6",
-            "filp/whoops": "^2.1.4",
-            "mockery/mockery": "~1.0",
-            "moontoast/math": "^1.1",
-            "orchestra/testbench-core": "3.6.*",
-            "pda/pheanstalk": "~3.0",
-            "phpunit/phpunit": "~7.0",
-            "predis/predis": "^1.1.1",
-            "symfony/css-selector": "~4.0",
-            "symfony/dom-crawler": "~4.0"
-        },
-        "suggest": {
-            "aws/aws-sdk-php": "Required to use the SQS queue driver and SES mail driver (~3.0).",
-            "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.6).",
-            "ext-pcntl": "Required to use all features of the queue worker.",
-            "ext-posix": "Required to use all features of the queue worker.",
-            "fzaninotto/faker": "Required to use the eloquent factory builder (~1.4).",
-            "guzzlehttp/guzzle": "Required to use the Mailgun and Mandrill mail drivers and the ping methods on schedules (~6.0).",
-            "laravel/tinker": "Required to use the tinker console command (~1.0).",
-            "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
-            "league/flysystem-cached-adapter": "Required to use Flysystem caching (~1.0).",
-            "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0).",
-            "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (~1.0).",
-            "nexmo/client": "Required to use the Nexmo transport (~1.0).",
-            "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0).",
-            "predis/predis": "Required to use the redis cache and queue drivers (~1.0).",
-            "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~3.0).",
-            "symfony/css-selector": "Required to use some of the crawler integration testing tools (~4.0).",
-            "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~4.0).",
-            "symfony/psr-http-message-bridge": "Required to psr7 bridging features (~1.0)."
-        },
-        "time": "2018-03-07 14:04:49",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.6-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/Illuminate/Foundation/helpers.php",
-                "src/Illuminate/Support/helpers.php"
-            ],
-            "psr-4": {
-                "Illuminate\\": "src/Illuminate/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
-            }
-        ],
-        "description": "The Laravel Framework.",
-        "homepage": "https://laravel.com",
-        "keywords": [
-            "framework",
-            "laravel"
         ]
     },
     {
@@ -2796,57 +2601,6 @@
         "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock."
     },
     {
-        "name": "phpunit/php-token-stream",
-        "version": "3.0.0",
-        "version_normalized": "3.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-            "reference": "21ad88bbba7c3d93530d93994e0a33cd45f02ace"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/21ad88bbba7c3d93530d93994e0a33cd45f02ace",
-            "reference": "21ad88bbba7c3d93530d93994e0a33cd45f02ace",
-            "shasum": ""
-        },
-        "require": {
-            "ext-tokenizer": "*",
-            "php": "^7.1"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^7.0"
-        },
-        "time": "2018-02-01 13:16:43",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de"
-            }
-        ],
-        "description": "Wrapper around PHP's tokenizer extension.",
-        "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
-        "keywords": [
-            "tokenizer"
-        ]
-    },
-    {
         "name": "sebastian/version",
         "version": "2.0.1",
         "version_normalized": "2.0.1.0",
@@ -3261,64 +3015,6 @@
         ]
     },
     {
-        "name": "sebastian/diff",
-        "version": "3.0.0",
-        "version_normalized": "3.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/diff.git",
-            "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/e09160918c66281713f1c324c1f4c4c3037ba1e8",
-            "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.1"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^7.0",
-            "symfony/process": "^2 || ^3.3 || ^4"
-        },
-        "time": "2018-02-01 13:45:15",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Kore Nordmann",
-                "email": "mail@kore-nordmann.de"
-            },
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de"
-            }
-        ],
-        "description": "Diff implementation",
-        "homepage": "https://github.com/sebastianbergmann/diff",
-        "keywords": [
-            "diff",
-            "udiff",
-            "unidiff",
-            "unified diff"
-        ]
-    },
-    {
         "name": "sebastian/comparator",
         "version": "2.1.3",
         "version_normalized": "2.1.3.0",
@@ -3484,115 +3180,6 @@
         ]
     },
     {
-        "name": "phpunit/phpunit-mock-objects",
-        "version": "6.0.1",
-        "version_normalized": "6.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-            "reference": "e3249dedc2d99259ccae6affbc2684eac37c2e53"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/e3249dedc2d99259ccae6affbc2684eac37c2e53",
-            "reference": "e3249dedc2d99259ccae6affbc2684eac37c2e53",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/instantiator": "^1.0.5",
-            "php": "^7.1",
-            "phpunit/php-text-template": "^1.2.1",
-            "sebastian/exporter": "^3.1"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^7.0"
-        },
-        "suggest": {
-            "ext-soap": "*"
-        },
-        "time": "2018-02-15 05:27:38",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "6.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de",
-                "role": "lead"
-            }
-        ],
-        "description": "Mock Object library for PHPUnit",
-        "homepage": "https://github.com/sebastianbergmann/phpunit-mock-objects/",
-        "keywords": [
-            "mock",
-            "xunit"
-        ]
-    },
-    {
-        "name": "phpunit/php-timer",
-        "version": "2.0.0",
-        "version_normalized": "2.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/php-timer.git",
-            "reference": "8b8454ea6958c3dee38453d3bd571e023108c91f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/8b8454ea6958c3dee38453d3bd571e023108c91f",
-            "reference": "8b8454ea6958c3dee38453d3bd571e023108c91f",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.1"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^7.0"
-        },
-        "time": "2018-02-01 13:07:23",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de",
-                "role": "lead"
-            }
-        ],
-        "description": "Utility class for timing",
-        "homepage": "https://github.com/sebastianbergmann/php-timer/",
-        "keywords": [
-            "timer"
-        ]
-    },
-    {
         "name": "phpunit/php-file-iterator",
         "version": "1.4.5",
         "version_normalized": "1.4.5.0",
@@ -3729,71 +3316,6 @@
         ],
         "description": "Looks up which function or method a line of code belongs to",
         "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/"
-    },
-    {
-        "name": "phpunit/php-code-coverage",
-        "version": "6.0.1",
-        "version_normalized": "6.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-            "reference": "f8ca4b604baf23dab89d87773c28cc07405189ba"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/f8ca4b604baf23dab89d87773c28cc07405189ba",
-            "reference": "f8ca4b604baf23dab89d87773c28cc07405189ba",
-            "shasum": ""
-        },
-        "require": {
-            "ext-dom": "*",
-            "ext-xmlwriter": "*",
-            "php": "^7.1",
-            "phpunit/php-file-iterator": "^1.4.2",
-            "phpunit/php-text-template": "^1.2.1",
-            "phpunit/php-token-stream": "^3.0",
-            "sebastian/code-unit-reverse-lookup": "^1.0.1",
-            "sebastian/environment": "^3.0",
-            "sebastian/version": "^2.0.1",
-            "theseer/tokenizer": "^1.1"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^7.0"
-        },
-        "suggest": {
-            "ext-xdebug": "^2.6.0"
-        },
-        "time": "2018-02-02 07:01:41",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "6.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de",
-                "role": "lead"
-            }
-        ],
-        "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
-        "homepage": "https://github.com/sebastianbergmann/php-code-coverage",
-        "keywords": [
-            "coverage",
-            "testing",
-            "xunit"
-        ]
     },
     {
         "name": "phpspec/prophecy",
@@ -4014,88 +3536,6 @@
         ]
     },
     {
-        "name": "phpunit/phpunit",
-        "version": "7.0.2",
-        "version_normalized": "7.0.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
-            "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
-            "shasum": ""
-        },
-        "require": {
-            "ext-dom": "*",
-            "ext-json": "*",
-            "ext-libxml": "*",
-            "ext-mbstring": "*",
-            "ext-xml": "*",
-            "myclabs/deep-copy": "^1.6.1",
-            "phar-io/manifest": "^1.0.1",
-            "phar-io/version": "^1.0",
-            "php": "^7.1",
-            "phpspec/prophecy": "^1.7",
-            "phpunit/php-code-coverage": "^6.0",
-            "phpunit/php-file-iterator": "^1.4.3",
-            "phpunit/php-text-template": "^1.2.1",
-            "phpunit/php-timer": "^2.0",
-            "phpunit/phpunit-mock-objects": "^6.0",
-            "sebastian/comparator": "^2.1",
-            "sebastian/diff": "^3.0",
-            "sebastian/environment": "^3.1",
-            "sebastian/exporter": "^3.1",
-            "sebastian/global-state": "^2.0",
-            "sebastian/object-enumerator": "^3.0.3",
-            "sebastian/resource-operations": "^1.0",
-            "sebastian/version": "^2.0.1"
-        },
-        "require-dev": {
-            "ext-pdo": "*"
-        },
-        "suggest": {
-            "ext-xdebug": "*",
-            "phpunit/php-invoker": "^2.0"
-        },
-        "time": "2018-02-26 07:03:12",
-        "bin": [
-            "phpunit"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "7.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de",
-                "role": "lead"
-            }
-        ],
-        "description": "The PHP Unit Testing framework.",
-        "homepage": "https://phpunit.de/",
-        "keywords": [
-            "phpunit",
-            "testing",
-            "xunit"
-        ]
-    },
-    {
         "name": "maximebf/debugbar",
         "version": "v1.15.0",
         "version_normalized": "1.15.0.0",
@@ -4226,6 +3666,566 @@
             "laravel",
             "profiler",
             "webprofiler"
+        ]
+    },
+    {
+        "name": "nesbot/carbon",
+        "version": "1.24.1",
+        "version_normalized": "1.24.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/briannesbitt/Carbon.git",
+            "reference": "ef12cbd8ba5ce624f0a6a95e0850c4cc13e71e41"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ef12cbd8ba5ce624f0a6a95e0850c4cc13e71e41",
+            "reference": "ef12cbd8ba5ce624f0a6a95e0850c4cc13e71e41",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9",
+            "symfony/translation": "~2.6 || ~3.0 || ~4.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "~2",
+            "phpunit/phpunit": "^4.8.35 || ^5.7"
+        },
+        "time": "2018-03-09 15:49:34",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.23-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Carbon\\": "src/Carbon/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Brian Nesbitt",
+                "email": "brian@nesbot.com",
+                "homepage": "http://nesbot.com"
+            }
+        ],
+        "description": "A simple API extension for DateTime.",
+        "homepage": "http://carbon.nesbot.com",
+        "keywords": [
+            "date",
+            "datetime",
+            "time"
+        ]
+    },
+    {
+        "name": "laravel/framework",
+        "version": "v5.6.11",
+        "version_normalized": "5.6.11.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/framework.git",
+            "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
+            "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/inflector": "~1.1",
+            "dragonmantank/cron-expression": "~2.0",
+            "erusev/parsedown": "~1.7",
+            "ext-mbstring": "*",
+            "ext-openssl": "*",
+            "league/flysystem": "~1.0",
+            "monolog/monolog": "~1.12",
+            "nesbot/carbon": "^1.24.1",
+            "php": "^7.1.3",
+            "psr/container": "~1.0",
+            "psr/simple-cache": "^1.0",
+            "ramsey/uuid": "^3.7",
+            "swiftmailer/swiftmailer": "~6.0",
+            "symfony/console": "~4.0",
+            "symfony/debug": "~4.0",
+            "symfony/finder": "~4.0",
+            "symfony/http-foundation": "~4.0",
+            "symfony/http-kernel": "~4.0",
+            "symfony/process": "~4.0",
+            "symfony/routing": "~4.0",
+            "symfony/var-dumper": "~4.0",
+            "tijsverkoyen/css-to-inline-styles": "^2.2.1",
+            "vlucas/phpdotenv": "~2.2"
+        },
+        "conflict": {
+            "tightenco/collect": "<5.5.33"
+        },
+        "replace": {
+            "illuminate/auth": "self.version",
+            "illuminate/broadcasting": "self.version",
+            "illuminate/bus": "self.version",
+            "illuminate/cache": "self.version",
+            "illuminate/config": "self.version",
+            "illuminate/console": "self.version",
+            "illuminate/container": "self.version",
+            "illuminate/contracts": "self.version",
+            "illuminate/cookie": "self.version",
+            "illuminate/database": "self.version",
+            "illuminate/encryption": "self.version",
+            "illuminate/events": "self.version",
+            "illuminate/filesystem": "self.version",
+            "illuminate/hashing": "self.version",
+            "illuminate/http": "self.version",
+            "illuminate/log": "self.version",
+            "illuminate/mail": "self.version",
+            "illuminate/notifications": "self.version",
+            "illuminate/pagination": "self.version",
+            "illuminate/pipeline": "self.version",
+            "illuminate/queue": "self.version",
+            "illuminate/redis": "self.version",
+            "illuminate/routing": "self.version",
+            "illuminate/session": "self.version",
+            "illuminate/support": "self.version",
+            "illuminate/translation": "self.version",
+            "illuminate/validation": "self.version",
+            "illuminate/view": "self.version"
+        },
+        "require-dev": {
+            "aws/aws-sdk-php": "~3.0",
+            "doctrine/dbal": "~2.6",
+            "filp/whoops": "^2.1.4",
+            "mockery/mockery": "~1.0",
+            "moontoast/math": "^1.1",
+            "orchestra/testbench-core": "3.6.*",
+            "pda/pheanstalk": "~3.0",
+            "phpunit/phpunit": "~7.0",
+            "predis/predis": "^1.1.1",
+            "symfony/css-selector": "~4.0",
+            "symfony/dom-crawler": "~4.0"
+        },
+        "suggest": {
+            "aws/aws-sdk-php": "Required to use the SQS queue driver and SES mail driver (~3.0).",
+            "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.6).",
+            "ext-pcntl": "Required to use all features of the queue worker.",
+            "ext-posix": "Required to use all features of the queue worker.",
+            "fzaninotto/faker": "Required to use the eloquent factory builder (~1.4).",
+            "guzzlehttp/guzzle": "Required to use the Mailgun and Mandrill mail drivers and the ping methods on schedules (~6.0).",
+            "laravel/tinker": "Required to use the tinker console command (~1.0).",
+            "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
+            "league/flysystem-cached-adapter": "Required to use Flysystem caching (~1.0).",
+            "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0).",
+            "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (~1.0).",
+            "nexmo/client": "Required to use the Nexmo transport (~1.0).",
+            "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0).",
+            "predis/predis": "Required to use the redis cache and queue drivers (~1.0).",
+            "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~3.0).",
+            "symfony/css-selector": "Required to use some of the crawler integration testing tools (~4.0).",
+            "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~4.0).",
+            "symfony/psr-http-message-bridge": "Required to psr7 bridging features (~1.0)."
+        },
+        "time": "2018-03-09 16:53:27",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.6-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/Illuminate/Foundation/helpers.php",
+                "src/Illuminate/Support/helpers.php"
+            ],
+            "psr-4": {
+                "Illuminate\\": "src/Illuminate/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "The Laravel Framework.",
+        "homepage": "https://laravel.com",
+        "keywords": [
+            "framework",
+            "laravel"
+        ]
+    },
+    {
+        "name": "sebastian/diff",
+        "version": "3.0.0",
+        "version_normalized": "3.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/diff.git",
+            "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/e09160918c66281713f1c324c1f4c4c3037ba1e8",
+            "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^7.0",
+            "symfony/process": "^2 || ^3.3 || ^4"
+        },
+        "time": "2018-02-01 13:45:15",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Kore Nordmann",
+                "email": "mail@kore-nordmann.de"
+            },
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Diff implementation",
+        "homepage": "https://github.com/sebastianbergmann/diff",
+        "keywords": [
+            "diff",
+            "udiff",
+            "unidiff",
+            "unified diff"
+        ]
+    },
+    {
+        "name": "phpunit/phpunit-mock-objects",
+        "version": "6.0.1",
+        "version_normalized": "6.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
+            "reference": "e3249dedc2d99259ccae6affbc2684eac37c2e53"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/e3249dedc2d99259ccae6affbc2684eac37c2e53",
+            "reference": "e3249dedc2d99259ccae6affbc2684eac37c2e53",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/instantiator": "^1.0.5",
+            "php": "^7.1",
+            "phpunit/php-text-template": "^1.2.1",
+            "sebastian/exporter": "^3.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^7.0"
+        },
+        "suggest": {
+            "ext-soap": "*"
+        },
+        "time": "2018-02-15 05:27:38",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "6.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Mock Object library for PHPUnit",
+        "homepage": "https://github.com/sebastianbergmann/phpunit-mock-objects/",
+        "keywords": [
+            "mock",
+            "xunit"
+        ]
+    },
+    {
+        "name": "phpunit/php-timer",
+        "version": "2.0.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-timer.git",
+            "reference": "8b8454ea6958c3dee38453d3bd571e023108c91f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/8b8454ea6958c3dee38453d3bd571e023108c91f",
+            "reference": "8b8454ea6958c3dee38453d3bd571e023108c91f",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^7.0"
+        },
+        "time": "2018-02-01 13:07:23",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Utility class for timing",
+        "homepage": "https://github.com/sebastianbergmann/php-timer/",
+        "keywords": [
+            "timer"
+        ]
+    },
+    {
+        "name": "phpunit/php-token-stream",
+        "version": "3.0.0",
+        "version_normalized": "3.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-token-stream.git",
+            "reference": "21ad88bbba7c3d93530d93994e0a33cd45f02ace"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/21ad88bbba7c3d93530d93994e0a33cd45f02ace",
+            "reference": "21ad88bbba7c3d93530d93994e0a33cd45f02ace",
+            "shasum": ""
+        },
+        "require": {
+            "ext-tokenizer": "*",
+            "php": "^7.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^7.0"
+        },
+        "time": "2018-02-01 13:16:43",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Wrapper around PHP's tokenizer extension.",
+        "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
+        "keywords": [
+            "tokenizer"
+        ]
+    },
+    {
+        "name": "phpunit/php-code-coverage",
+        "version": "6.0.1",
+        "version_normalized": "6.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
+            "reference": "f8ca4b604baf23dab89d87773c28cc07405189ba"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/f8ca4b604baf23dab89d87773c28cc07405189ba",
+            "reference": "f8ca4b604baf23dab89d87773c28cc07405189ba",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-xmlwriter": "*",
+            "php": "^7.1",
+            "phpunit/php-file-iterator": "^1.4.2",
+            "phpunit/php-text-template": "^1.2.1",
+            "phpunit/php-token-stream": "^3.0",
+            "sebastian/code-unit-reverse-lookup": "^1.0.1",
+            "sebastian/environment": "^3.0",
+            "sebastian/version": "^2.0.1",
+            "theseer/tokenizer": "^1.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^7.0"
+        },
+        "suggest": {
+            "ext-xdebug": "^2.6.0"
+        },
+        "time": "2018-02-02 07:01:41",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "6.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
+        "homepage": "https://github.com/sebastianbergmann/php-code-coverage",
+        "keywords": [
+            "coverage",
+            "testing",
+            "xunit"
+        ]
+    },
+    {
+        "name": "phpunit/phpunit",
+        "version": "7.0.2",
+        "version_normalized": "7.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/phpunit.git",
+            "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
+            "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-json": "*",
+            "ext-libxml": "*",
+            "ext-mbstring": "*",
+            "ext-xml": "*",
+            "myclabs/deep-copy": "^1.6.1",
+            "phar-io/manifest": "^1.0.1",
+            "phar-io/version": "^1.0",
+            "php": "^7.1",
+            "phpspec/prophecy": "^1.7",
+            "phpunit/php-code-coverage": "^6.0",
+            "phpunit/php-file-iterator": "^1.4.3",
+            "phpunit/php-text-template": "^1.2.1",
+            "phpunit/php-timer": "^2.0",
+            "phpunit/phpunit-mock-objects": "^6.0",
+            "sebastian/comparator": "^2.1",
+            "sebastian/diff": "^3.0",
+            "sebastian/environment": "^3.1",
+            "sebastian/exporter": "^3.1",
+            "sebastian/global-state": "^2.0",
+            "sebastian/object-enumerator": "^3.0.3",
+            "sebastian/resource-operations": "^1.0",
+            "sebastian/version": "^2.0.1"
+        },
+        "require-dev": {
+            "ext-pdo": "*"
+        },
+        "suggest": {
+            "ext-xdebug": "*",
+            "phpunit/php-invoker": "^2.0"
+        },
+        "time": "2018-02-26 07:03:12",
+        "bin": [
+            "phpunit"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "7.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }
+        ],
+        "description": "The PHP Unit Testing framework.",
+        "homepage": "https://phpunit.de/",
+        "keywords": [
+            "phpunit",
+            "testing",
+            "xunit"
         ]
     }
 ]
