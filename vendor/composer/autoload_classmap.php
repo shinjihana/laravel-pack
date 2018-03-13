@@ -3559,6 +3559,7 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
     'Tests\\CreatesApplication' => $baseDir . '/tests/CreatesApplication.php',
+    'Tests\\Feature\\CreateThreadsTest' => $baseDir . '/tests/Feature/CreateThreadsTest.php',
     'Tests\\Feature\\ParticipateForum' => $baseDir . '/tests/Feature/ParticipateForumTest.php',
     'Tests\\Feature\\ThreadsTest' => $baseDir . '/tests/Feature/ReadThreadsTest.php',
     'Tests\\TestCase' => $baseDir . '/tests/TestCase.php',
