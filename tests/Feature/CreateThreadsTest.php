@@ -23,6 +23,12 @@ class CreateThreadsTest extends TestCase
 
     }
 
+    function test_guest_cannot_see_the_create_thread_page()
+    {
+       $this->get('/threads/create')
+                ->assertRedirect('/login'); 
+    }
+
     public function test_an_authenticated_user_can_create_new_forum_threads()
     {
         /* Given we have a signed in User */

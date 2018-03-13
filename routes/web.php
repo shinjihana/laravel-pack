@@ -21,7 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /** Processing Threads */
 Route::get('/threads', 'ThreadsController@index');
+Route::get('/threads/create', 'ThreadsController@create');
 Route::post('/threads', 'ThreadsController@store');
 Route::get('/threads/{thread}', 'ThreadsController@show');
 Route::post('/threads/{thread}/replies', 'RepliesController@store');
+
+/**
+ * maybe use Route::resource('threads', 'ThreadsController');
+ */
 
