@@ -14,13 +14,12 @@ class CreateThreadsTest extends TestCase
     function test_guest_may_not_create_thread()
     {
         /* Given we have a signed in User */
-        $this->actingAs(factory('App\User')->create());
+        // $this->actingAs(factory('App\User')->create());
 
         /* When we hit the endpoint to create a new thread */
         $thread = factory('Happy\ThreadMan\Thread')->make();
-        $this->post('/threads', $thread->toArray());
-
-
+        $this->post('/threads', $thread->toArray())
+                ->assertRedirect('/login');
     }
 
     function test_guest_cannot_see_the_create_thread_page()
@@ -36,12 +35,12 @@ class CreateThreadsTest extends TestCase
         $this->signIn();
 
         /* When we hit the endpoint to create a new thread */
-        $thread = make('Happy\ThreadMan\Thread');
+        $thread = create('Happy\ThreadMan\Thread');
         $this->post('/threads', $thread->toArray());
 
         /* Then, when we visit the thread page:*/
         $response = $this->get($thread->path());
-        
+
         /* we should see the new thread:*/
         $response->assertSee($thread->title)
                 ->assertSee($thread->body);
