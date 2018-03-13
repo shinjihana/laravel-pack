@@ -20,6 +20,7 @@
                                 name="body" placeholder="コンテンツを入力"
                                 class="form-control" id="body" rows="3"></textarea>
                         </div>
+                        <input type="hidden" name="channel_id" value="1">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
