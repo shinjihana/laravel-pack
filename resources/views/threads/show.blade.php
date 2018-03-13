@@ -31,6 +31,7 @@
                         <div class="form-group">
                             <label for="body">コメント : </label>
                             <textarea 
+                                required
                                 name="body" id="" 
                                 placeholder="コメントを入力してください。"
                                 class="form-control" cols="30" rows="10">

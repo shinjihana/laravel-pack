@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class CreateThreadsTest extends TestCase
 {
     use DatabaseMigrations;
+    const ThreadTbl = 'Happy\ThreadMan\Thread';
 
     function test_guest_may_not_create_thread()
     {
@@ -36,13 +37,45 @@ class CreateThreadsTest extends TestCase
 
         /* When we hit the endpoint to create a new thread */
         $thread = create('Happy\ThreadMan\Thread');
-        $this->post('/threads', $thread->toArray());
+        $response = $this->post('/threads', $thread->toArray());
 
         /* Then, when we visit the thread page:*/
-        $response = $this->get($thread->path());
+        $response = $this->get($response->headers->get('Location'));
 
         /* we should see the new thread:*/
         $response->assertSee($thread->title)
                 ->assertSee($thread->body);
+    }
+
+    // function test_a_thread_requires_a_title()
+    // {
+    //     $this->signIn();
+
+    //     $thread = make(self::ThreadTbl, ['title' => null]);
+
+    //     $this->post('/threads', $thread->toArray())
+    //             ->assertSessionHasErrors('title');
+    // }
+
+    function test_a_thread_requires_a_title()
+    {
+        $this->publishThread(['title' => null])
+                ->assertSessionHasErrors('title');
+    }
+
+    function test_a_thread_requires_a_channel()
+    {
+        $this->publishThread(['channel_id' => null])
+                ->assertSessionHasErrors('channel_id');
+    }
+
+
+    public function publishThread($overrides = [])
+    {
+        $this->signIn();
+
+        $thread = make(self::ThreadTbl, $overrides);
+
+        return $this->post('/threads', $thread->toArray());
     }
 }
