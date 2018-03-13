@@ -30,8 +30,8 @@ class ParticipateForum extends TestCase
         $reply = factory('Happy\ThreadMan\Reply')->create(['thread_id' => $thread->id, 'user_id' => $thread->user_id]);
 
         //check response return 200 if saving data is success
-        $response =  $this->post($thread->path().'/replies', ['reply' => $reply->toArray(), '_token' => csrf_token()]);
-        
+        $response =  $this->post($thread->path().'/replies', ['body' => $reply->body, '_token' => csrf_token()]);
+
         $this->assertDatabaseHas('replies', [
             'user_id' => $thread->user_id
         ]);
