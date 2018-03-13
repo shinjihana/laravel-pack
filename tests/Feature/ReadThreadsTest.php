@@ -33,7 +33,7 @@ class ThreadsTest extends TestCase
 
     public function test_a_user_access_thread_detail(){
         
-        $this->get('/threads/'.$this->thread->id)
+        $this->get($this->thread->path())
                 ->assertSee($this->thread->title);
     }
 
@@ -49,7 +49,7 @@ class ThreadsTest extends TestCase
          $reply = factory('Happy\ThreadMan\Reply')->create(['thread_id' => $this->thread->id]);
 
          /**3 */
-        $this->get('/threads/'. $this->thread->id)
+        $this->get($this->thread->path())
                 ->assertSee($reply->body);
     }
 }
