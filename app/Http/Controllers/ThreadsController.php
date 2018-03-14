@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Happy\ThreadMan\Thread;
 use Illuminate\Http\Request;
 
+use Happy\ThreadMan\Channel;
+
 class ThreadsController extends Controller
 {
     public function __construct()
@@ -14,12 +16,16 @@ class ThreadsController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * @Param Channel $channel
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Channel $channel)
     {
-        $threads = Thread::latest()->get();
+        if ($channel->exist){
+            $threads = $channel->threads()->latest();
+        } else {
+            $threads = Thread::latest()->get();
+        }
 
         return view('threads.index', compact('threads'));
     }

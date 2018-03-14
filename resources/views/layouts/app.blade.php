@@ -28,6 +28,21 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><a class="nav-link" href="/threads">レコード</a></li>
+                        <li>
+                            <a class="nav-link" href="/threads/create">New Thread</a>
+                        </li>
+                        <li>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true">
+                                    Channels
+                                </button>
+                                <div class="dropdown-menu">
+                                    @foreach (Happy\ThreadMan\Channel::all() as $channel)
+                                        <a class="dropdown-item" href="/threads/{{ $channel->slug }}">{{ $channel->slug }}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

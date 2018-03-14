@@ -12,16 +12,40 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title">タイトル</label>
-                            <input type="text" class="form-control" placeholder="タイトル入力" name="title">
+                            <div class="input-group mb-3">
+                                <select class="custom-select" id="channel_id" 
+                                    name="channel_id" required>
+                                        <option value="">Choose One...</option>
+                                    @foreach( Happy\ThreadMan\Channel::all() as $channel)
+                                        <option value="{{ $channel->id }}"
+                                            {{ old('channel_id') == $channel->id ? 'selected' : ''}}
+                                        >{{ $channel->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">タイトル</label>
+                            <input type="text" class="form-control" required
+                                placeholder="タイトル入力" name="title" value="{{ old('title') }}">
                         </div>
                         <div class="form-group">
                             <label for="content">コンテンツ</label>
                             <textarea 
-                                name="body" placeholder="コンテンツを入力"
-                                class="form-control" id="body" rows="3"></textarea>
+                                name="body" placeholder="コンテンツを入力" required
+                                class="form-control" id="body" rows="3" value="{{ old('body') }}"></textarea>
                         </div>
-                        <input type="hidden" name="channel_id" value="1">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <!-- <input type="hidden" name="channel_id" value="1"> -->
+                        @if(count($errors))
+                        <ul class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                            <li> {{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </form>
                 </div>
             </div>

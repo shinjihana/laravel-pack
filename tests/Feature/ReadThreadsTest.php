@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class ThreadsTest extends TestCase
+class ReadThreadsTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -51,5 +51,16 @@ class ThreadsTest extends TestCase
          /**3 */
         $this->get($this->thread->path())
                 ->assertSee($reply->body);
+    }
+
+    public function test_a_user_can_filter_threads_according_to_a_channel()
+    {
+        $channel = create('Happy\ThreadMan\Channel');
+
+        $threadInChannel = create('Happy\ThreadMan\Thread', ['channel_id' => $channel->id]);
+        $threadNotInChannel = create('Happy\ThreadMan\Thread');
+
+        $this->get('/threads/'. $channel->slug)
+                ->assertSee($threadInChannel->title);
     }
 }

@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     @foreach ($threads as $thread)
-                    <div class="card">
+                    <div class="card mt-2">
                         <div class="card-header">
                             <h2>
                                 <a href="{{ $thread->path() }}">
