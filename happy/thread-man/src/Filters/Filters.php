@@ -30,8 +30,6 @@ abstract class Filters
             if (method_exists($this, $filter)){
                 $this->$filter($value);
             }
-
-            $this->$filter($this->request->$filter);
         }
 
         return $this->builder;
