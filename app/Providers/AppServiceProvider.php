@@ -16,6 +16,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
+
+        /**Share channel in everywhere view layout */
+        \View::share('channels', \Happy\ThreadMan\Channel::all());
     }
 
     /**

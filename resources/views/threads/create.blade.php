@@ -11,12 +11,12 @@
                     <form action="/threads" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="title">タイトル</label>
+                            <label for="title">Channel</label>
                             <div class="input-group mb-3">
                                 <select class="custom-select" id="channel_id" 
                                     name="channel_id" required>
                                         <option value="">Choose One...</option>
-                                    @foreach( Happy\ThreadMan\Channel::all() as $channel)
+                                    @foreach( $channels as $channel)
                                         <option value="{{ $channel->id }}"
                                             {{ old('channel_id') == $channel->id ? 'selected' : ''}}
                                         >{{ $channel->name }}</option>

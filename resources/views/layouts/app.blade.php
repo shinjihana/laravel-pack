@@ -37,7 +37,7 @@
                                     Channels
                                 </button>
                                 <div class="dropdown-menu">
-                                    @foreach (Happy\ThreadMan\Channel::all() as $channel)
+                                    @foreach ($channels as $channel)
                                         <a class="dropdown-item" href="/threads/{{ $channel->slug }}">{{ $channel->slug }}</a>
                                     @endforeach
                                 </div>
