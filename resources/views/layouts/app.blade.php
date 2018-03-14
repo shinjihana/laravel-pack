@@ -27,7 +27,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li><a class="nav-link" href="/threads">レコード</a></li>
+                        <li>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true">
+                                    Browser
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="nav-link" href="/threads">全レコード</a>
+                                    @if( auth()->check())
+                                    <a class="nav-link" href="/threads?by={{ auth()->user()->name}}">マイレコード</a>
+                                    @endif
+                                </div>
+                            </div>
+
+                        </li>
                         <li>
                             <a class="nav-link" href="/threads/create">New Thread</a>
                         </li>

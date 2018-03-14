@@ -6,6 +6,7 @@ use Happy\ThreadMan\Thread;
 use Illuminate\Http\Request;
 
 use Happy\ThreadMan\Channel;
+use Happy\ThreadMan\Filters\ThreadFilters;
 
 class ThreadsController extends Controller
 {
@@ -19,13 +20,24 @@ class ThreadsController extends Controller
      * @Param Channel $channel
      * @return \Illuminate\Http\Response
      */
-    public function index(Channel $channel)
+    public function index(Channel $channel, ThreadFilters $filters)
     {
         if ($channel->exist){
             $threads = $channel->threads()->latest();
         } else {
-            $threads = Thread::latest()->get();
+            $threads = Thread::latest();
         }
+
+        //-------if request('by'), we should filter by the given username.-------
+        // if ($username = request('by')){
+        //     $user = \App\User::where('name', $username)->firstOrFail();
+        //     $threads->where('user_id', $user->id);
+        // }
+
+        // $threads = $threads->get();
+        //---if request('by'), we should filter by the given username.-------
+
+        $threads = $threads->filter($filters)->get();
 
         return view('threads.index', compact('threads'));
     }
