@@ -16,7 +16,7 @@ class ParticipateForum extends TestCase
     public function setUp(){
         parent::setUp();
 
-        $this->thread = factory('Happy\ThreadMan\Thread')->create();
+        $this->thread = factory(self::ThreadTbl)->create();
     }
     function test_an_authenticated_user_may_participate_in_forum_threads()
     {
@@ -25,9 +25,9 @@ class ParticipateForum extends TestCase
         $this->be($user); 
         //can be write like as $this->be($user = factory('App\User')->create();
         //And an Existing thread 
-        $thread = factory('Happy\ThreadMan\Thread')->create(['user_id' => $user->id]);
+        $thread = factory(self::ThreadTbl)->create(['user_id' => $user->id]);
         //When the user adds a rely to thread
-        $reply = factory('Happy\ThreadMan\Reply')->create(['thread_id' => $thread->id, 'user_id' => $thread->user_id]);
+        $reply = factory(self::ReplyTbl)->create(['thread_id' => $thread->id, 'user_id' => $thread->user_id]);
 
         //check response return 200 if saving data is success
         $response =  $this->post($thread->path().'/replies', ['body' => $reply->body, '_token' => csrf_token()]);
@@ -44,7 +44,7 @@ class ParticipateForum extends TestCase
 
     function test_unauthenticated_users_may_not_add_replies(){
         
-        $reply = factory('Happy\ThreadMan\Reply')->create(['thread_id' => $this->thread->id]);
+        $reply = factory(self::ReplyTbl)->create(['thread_id' => $this->thread->id]);
 
         $response =  $this->post($this->thread->path().'/replies', ['reply' => $reply->toArray(), '_token' => csrf_token()]);
         

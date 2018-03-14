@@ -11,18 +11,16 @@ class ThreadTest extends TestCase
 {
     use DatabaseMigrations;
 
-    const ThreadTbl = 'Happy\ThreadMan\Thread';
-    const ChanelTbl = 'Happy\ThreadMan\Channel';
     public $thread;
 
     public function setUp(){
         parent::setUp();
 
-        $this->thread =  factory('Happy\ThreadMan\Thread')->create();
+        $this->thread =  factory(self::ThreadTbl)->create();
     }
     
     public function test_a_thread_has_a_creator(){
-        $thread = factory('Happy\ThreadMan\Thread')->create();
+        $thread = factory(self::ThreadTbl)->create();
 
         $this->assertInstanceOf('App\User', $thread->creator);
     }
@@ -40,7 +38,7 @@ class ThreadTest extends TestCase
     {
         $thread = create(self::ThreadTbl);
 
-        $this->assertInstanceOf(self::ChanelTbl, $thread->channel);
+        $this->assertInstanceOf(self::ChannelTbl, $thread->channel);
     }
 
     function test_a_thread_can_make_a_string_path()

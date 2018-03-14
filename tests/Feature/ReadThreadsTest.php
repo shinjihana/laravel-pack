@@ -17,7 +17,7 @@ class ReadThreadsTest extends TestCase
     public function setUp() {
         parent::setUp();
         
-        $this->thread = factory('Happy\ThreadMan\Thread')->create();
+        $this->thread = factory(self::ThreadTbl)->create();
     }
     /**
      * A basic test example.
@@ -46,7 +46,7 @@ class ReadThreadsTest extends TestCase
          */
 
          /*2*/
-         $reply = factory('Happy\ThreadMan\Reply')->create(['thread_id' => $this->thread->id]);
+         $reply = factory(self::ReplyTbl)->create(['thread_id' => $this->thread->id]);
 
          /**3 */
         $this->get($this->thread->path())
@@ -55,10 +55,10 @@ class ReadThreadsTest extends TestCase
 
     public function test_a_user_can_filter_threads_according_to_a_channel()
     {
-        $channel = create('Happy\ThreadMan\Channel');
+        $channel = create(self::ChannelTbl);
 
-        $threadInChannel = create('Happy\ThreadMan\Thread', ['channel_id' => $channel->id]);
-        $threadNotInChannel = create('Happy\ThreadMan\Thread');
+        $threadInChannel = create(self::ThreadTbl, ['channel_id' => $channel->id]);
+        $threadNotInChannel = create(self::ThreadTbl);
 
         $this->get('/threads/'. $channel->slug)
                 ->assertSee($threadInChannel->title);

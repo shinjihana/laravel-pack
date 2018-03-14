@@ -16,7 +16,7 @@ class ReplyTest extends TestCase
     public function setUp() {
         parent::setUp();
         
-        $this->reply = factory('Happy\ThreadMan\Reply')->create();
+        $this->reply = factory(self::ReplyTbl)->create();
     }
 
     public function test_it_has_an_owner(){

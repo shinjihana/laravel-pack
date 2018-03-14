@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
+use Happy\ThreadMan\Channel;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -18,7 +19,9 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         /**Share channel in everywhere view layout */
-        \View::share('channels', \Happy\ThreadMan\Channel::all());
+        \View::composer('*', function($view){
+            $view->with('channels', Channel::all());
+        });
     }
 
     /**

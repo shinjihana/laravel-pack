@@ -10,7 +10,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class CreateThreadsTest extends TestCase
 {
     use DatabaseMigrations;
-    const ThreadTbl = 'Happy\ThreadMan\Thread';
 
     function test_guest_may_not_create_thread()
     {
@@ -18,7 +17,7 @@ class CreateThreadsTest extends TestCase
         // $this->actingAs(factory('App\User')->create());
 
         /* When we hit the endpoint to create a new thread */
-        $thread = factory('Happy\ThreadMan\Thread')->make();
+        $thread = factory(self::ThreadTbl)->make();
         $this->post('/threads', $thread->toArray())
                 ->assertRedirect('/login');
     }
@@ -36,7 +35,7 @@ class CreateThreadsTest extends TestCase
         $this->signIn();
 
         /* When we hit the endpoint to create a new thread */
-        $thread = create('Happy\ThreadMan\Thread');
+        $thread = create(self::ThreadTbl);
         $response = $this->post('/threads', $thread->toArray());
 
         /* Then, when we visit the thread page:*/
@@ -46,16 +45,6 @@ class CreateThreadsTest extends TestCase
         $response->assertSee($thread->title)
                 ->assertSee($thread->body);
     }
-
-    // function test_a_thread_requires_a_title()
-    // {
-    //     $this->signIn();
-
-    //     $thread = make(self::ThreadTbl, ['title' => null]);
-
-    //     $this->post('/threads', $thread->toArray())
-    //             ->assertSessionHasErrors('title');
-    // }
 
     function test_a_thread_requires_a_title()
     {
