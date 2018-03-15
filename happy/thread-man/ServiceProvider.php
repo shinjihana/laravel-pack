@@ -9,7 +9,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected $defer = true;
     
     /**
      * Register the service provider.
@@ -34,7 +34,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         \View::composer('*', function($view){
             $view->with('channels', Channel::all());
         });
-        
+
         /**Run console build db */
         if ($this->app->runningInConsole()) {
             $this->registerMigrations();
