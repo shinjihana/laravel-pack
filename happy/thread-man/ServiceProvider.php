@@ -9,7 +9,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      *
      * @var bool
      */
-    protected $defer = true;
+    protected $defer = false;
     
     /**
      * Register the service provider.
