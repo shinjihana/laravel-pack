@@ -37,6 +37,7 @@
                                     @if( auth()->check())
                                     <a class="nav-link" href="/threads?by={{ auth()->user()->name}}">マイレコード</a>
                                     @endif
+                                    <a class="nav-link" href="/threads?popular=1">人気のレーコド</a>
                                 </div>
                             </div>
 

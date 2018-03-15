@@ -48,4 +48,22 @@ class ThreadTest extends TestCase
         // $this->assertEquals('/threads/'. $thread->channel->slug. '/'. $thread->id, $thread->path());
         $this->assertEquals("/threads/{$thread->channel->slug}/{$thread->id}", $thread->path());
     }
+
+    function test_a_user_can_filter_thread_by_popularity()
+    {
+        //Given we have three threads
+        //With 2 replies, 3 replies, and 0 replies, respectively.
+        $threadWithTwoReplies = create(self::ThreadTbl);
+        create(self::ReplyTbl, ['thread_id' => $threadWithTwoReplies->id], 2);
+
+        $threadWithThreeReplies = create(self::ThreadTbl);
+        create(self::ReplyTbl, ['thread_id' => $threadWithThreeReplies->id], 3);
+
+        //When I filter all threads by popularity
+        $response =  $this->getJson('threads?popular=1')->json();
+
+        //Then they should be returned from most replies to least.
+        // $response->assertSee($threadWithThreeReplies->title);
+        $this->assertEquals([3,2,0], array_column($response, 'replies_count'));
+    }
 }

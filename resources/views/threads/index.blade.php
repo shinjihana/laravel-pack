@@ -9,13 +9,22 @@
 
                 <div class="card-body">
                     @foreach ($threads as $thread)
-                    <div class="card mt-2">
+                    <div class="card mt-2 border-primary">
                         <div class="card-header">
-                            <h2>
-                                <a href="{{ $thread->path() }}">
-                                    {{ $thread->title }}
-                                </a>
-                            </h2>
+                            <div class="d-flex">
+                                <div>
+                                    <h2>
+                                        <a href="{{ $thread->path() }}">
+                                            {{ $thread->title }}
+                                        </a>
+                                    </h2>
+                                </div>
+                                <div class="ml-auto">
+                                    <strong>
+                                        <a href="{{ $thread->path() }}">{{ $thread->replies_count }} reply</a>
+                                    </strong>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             {{ $thread->body }}
