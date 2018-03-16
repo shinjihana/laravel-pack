@@ -32,7 +32,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         /**Share channel in everywhere view layout */
         \View::composer('*', function($view){
-            $view->with('channels', Channel::all());
+
+            $channels = \Cache::rememberForever('channels', function(){
+                return Channel::all();
+            });
+            $view->with('channels', $channels);
         });
 
         /**Run console build db */

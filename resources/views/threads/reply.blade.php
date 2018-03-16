@@ -14,7 +14,7 @@
                                 type="submit" class="btn btn-primary"
                                 {{ $reply->isFavorited() ?  'disabled' : '' }}
                             >
-                                {{ $reply->favorites()->count()}} Like
+                                {{ $reply->favorites_count}} Like
                             </button>
                         </form>
                     </div>
