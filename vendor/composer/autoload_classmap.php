@@ -738,6 +738,7 @@ return array(
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'Happy\\ThreadMan\\Channel' => $baseDir . '/happy/thread-man/src/Models/Channel.php',
     'Happy\\ThreadMan\\Facade' => $baseDir . '/happy/thread-man/Facade.php',
+    'Happy\\ThreadMan\\Favoritable' => $baseDir . '/happy/thread-man/src/Models/Favoritable.php',
     'Happy\\ThreadMan\\Favorite' => $baseDir . '/happy/thread-man/src/Models/Favorite.php',
     'Happy\\ThreadMan\\Filters\\Filters' => $baseDir . '/happy/thread-man/src/Filters/Filters.php',
     'Happy\\ThreadMan\\Filters\\ThreadFilters' => $baseDir . '/happy/thread-man/src/Filters/ThreadFilters.php',

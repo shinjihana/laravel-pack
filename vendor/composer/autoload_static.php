@@ -1074,6 +1074,7 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'Happy\\ThreadMan\\Channel' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Channel.php',
         'Happy\\ThreadMan\\Facade' => __DIR__ . '/../..' . '/happy/thread-man/Facade.php',
+        'Happy\\ThreadMan\\Favoritable' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Favoritable.php',
         'Happy\\ThreadMan\\Favorite' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Favorite.php',
         'Happy\\ThreadMan\\Filters\\Filters' => __DIR__ . '/../..' . '/happy/thread-man/src/Filters/Filters.php',
         'Happy\\ThreadMan\\Filters\\ThreadFilters' => __DIR__ . '/../..' . '/happy/thread-man/src/Filters/ThreadFilters.php',
