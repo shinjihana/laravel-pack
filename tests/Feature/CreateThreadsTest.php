@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CreateThreadsTest extends TestCase
@@ -58,13 +57,14 @@ class CreateThreadsTest extends TestCase
                 ->assertSessionHasErrors('channel_id');
     }
 
-
-    public function publishThread($overrides = [])
+    public function test_a_thread_can_be_deleted()
     {
         $this->signIn();
 
-        $thread = make(self::ThreadTbl, $overrides);
+        $thread = create(self::ThreadTbl);
 
-        return $this->post('/threads', $thread->toArray());
+        $this->json('DELETE', $thread->path());
+
+        $this->assertDatabaseMissing('threads', ['id' => $thread->id]);
     }
 }

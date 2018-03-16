@@ -2,7 +2,7 @@
     <div class="card-header bg-success">
         <div class="d-flex">
             <div>
-                <a href="/profiles/{{{{ $reply->owner->name }}}}" class="text-white">
+                <a href="/profiles/{{ $reply->owner->name }}" class="text-white">
                     {{ $reply->owner->name }}
                 </a>
                 said {{ $reply->created_at->diffForHumans() }}...
