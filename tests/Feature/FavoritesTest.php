@@ -11,22 +11,29 @@ class FavoritesTest extends TestCase
 {
     use DatabaseMigrations;
 
-    // function test_guest_cannot_favorite_anything()
-    // {
-    //     //if I post to a 'favorite' endpoint
-    //     $this->post('replies/1/favorites')
-    //             ->assertRedirect('/login');
-    //     //It should be recorded in the database
-    //     // $this->assertCount(1, $reply->favorites);
-    // }
+    function test_guest_cannot_favorite_anything()
+    {
+        //if I post to a 'favorite' endpoint
+        $this->post('replies/1/favorites')
+                ->assertRedirect('/login');
+    }
 
-    // function test_an_authenticated_user_can_favorite_any_reply()
-    // {
-    //     $reply = create(self::ReplyTbl);
+    function test_an_authenticated_user_can_favorite_any_reply()
+    {
+        $this->signIn();
 
-    //     //if I post to a 'favorite' endpoint
-    //     $this->post('replies/'. $reply->id. '/favorite');
-    //     //It should be recorded in the database
-    //     $this->assertCount(1, $reply->favorites);
-    // }
+        $reply = create(self::ReplyTbl);
+
+        try {
+            //if I post to a 'favorite' endpoint
+            $this->post('/replies/'. $reply->id. '/favorites');
+
+            $this->post('/replies/'. $reply->id. '/favorites');
+        } catch (\Exception $e) {
+            $this->fail('Did not expect to insert the same record set twice');
+        }
+
+        //It should be recorded in the database
+        $this->assertCount(1, $reply->favorites);
+    }
 }
