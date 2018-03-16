@@ -1079,6 +1079,7 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'Happy\\ThreadMan\\Favorite' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Favorite.php',
         'Happy\\ThreadMan\\Filters\\Filters' => __DIR__ . '/../..' . '/happy/thread-man/src/Filters/Filters.php',
         'Happy\\ThreadMan\\Filters\\ThreadFilters' => __DIR__ . '/../..' . '/happy/thread-man/src/Filters/ThreadFilters.php',
+        'Happy\\ThreadMan\\Policies\\ThreadPolicy' => __DIR__ . '/../..' . '/happy/thread-man/src/Policies/ThreadPolicy.php',
         'Happy\\ThreadMan\\Reply' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Reply.php',
         'Happy\\ThreadMan\\ServiceProvider' => __DIR__ . '/../..' . '/happy/thread-man/ServiceProvider.php',
         'Happy\\ThreadMan\\Thread' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Thread.php',

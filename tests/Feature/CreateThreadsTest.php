@@ -67,4 +67,11 @@ class CreateThreadsTest extends TestCase
 
         $this->assertDatabaseMissing('threads', ['id' => $thread->id]);
     }
+    protected function publishThread($overrides = [])
+    {
+        $this->signIn();
+        $thread = make(self::ThreadTbl, $overrides);
+        
+        return $this->post('/threads', $thread->toArray());
+    }
 }

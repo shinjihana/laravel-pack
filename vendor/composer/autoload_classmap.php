@@ -743,6 +743,7 @@ return array(
     'Happy\\ThreadMan\\Favorite' => $baseDir . '/happy/thread-man/src/Models/Favorite.php',
     'Happy\\ThreadMan\\Filters\\Filters' => $baseDir . '/happy/thread-man/src/Filters/Filters.php',
     'Happy\\ThreadMan\\Filters\\ThreadFilters' => $baseDir . '/happy/thread-man/src/Filters/ThreadFilters.php',
+    'Happy\\ThreadMan\\Policies\\ThreadPolicy' => $baseDir . '/happy/thread-man/src/Policies/ThreadPolicy.php',
     'Happy\\ThreadMan\\Reply' => $baseDir . '/happy/thread-man/src/Models/Reply.php',
     'Happy\\ThreadMan\\ServiceProvider' => $baseDir . '/happy/thread-man/ServiceProvider.php',
     'Happy\\ThreadMan\\Thread' => $baseDir . '/happy/thread-man/src/Models/Thread.php',

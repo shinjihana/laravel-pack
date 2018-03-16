@@ -22,7 +22,6 @@ class ThreadsController extends Controller
      */
     public function index(Channel $channel, ThreadFilters $filters)
     {
-
         $threads = $this->getThreads($channel, $filters);
 
         if (request()->wantsJson()) {
@@ -75,7 +74,6 @@ class ThreadsController extends Controller
      */
     public function show($channelId, Thread $thread)
     {
-        // return $thread->replies;
         return view('threads.show', [
             'thread'    => $thread,
             'replies'   => $thread->replies()->paginate(5),
@@ -113,6 +111,16 @@ class ThreadsController extends Controller
      */
     public function destroy($channel, Thread $thread)
     {
+        //way 1
+        // if ($thread->user_id != auth()->id()){
+        //     if (request()->wantsJson()){
+        //         return response(['status' => 'Permission Denied'], 403);
+        //     }
+        //     return redirect('/login');
+        // }
+
+        //way 2
+        $this->authorize('update', $thread);
         $thread->delete();
 
         if( request()->wantsJson()){

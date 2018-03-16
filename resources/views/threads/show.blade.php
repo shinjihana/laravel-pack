@@ -15,6 +15,22 @@
                 <div class="card-body">
                     {{ $thread->body }}
                 </div>
+                @can('update', $thread)
+                    <div class="card-footer bg-transparent border-success">
+                            <div class="d-flex">
+                                <div class="ml-auto">
+                                    <button type="text" class="btn btn-link">編集</button>
+                                </div>
+                                <div>
+                                    <form action="{{ $thread->path() }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-link">削除</button>
+                                    </form>
+                                </div>
+                            </div>
+                    </div>
+                @endcan
             </div>
             
             @foreach($replies as $reply)
