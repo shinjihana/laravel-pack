@@ -2,6 +2,8 @@
 
 namespace Happy\ThreadMan;
 
+use Happy\ThreadMan\Channel;
+
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
@@ -36,6 +38,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             $channels = \Cache::rememberForever('channels', function(){
                 return Channel::all();
             });
+
+            // $channels = Channel::all();
             $view->with('channels', $channels);
         });
 
