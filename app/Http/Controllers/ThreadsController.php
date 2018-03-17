@@ -121,6 +121,7 @@ class ThreadsController extends Controller
 
         //way 2
         $this->authorize('update', $thread);
+
         $thread->delete();
 
         if( request()->wantsJson()){

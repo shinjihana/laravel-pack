@@ -11,6 +11,7 @@ abstract class TestCase extends BaseTestCase
     const ThreadTbl = 'Happy\ThreadMan\Thread';
     const ReplyTbl = 'Happy\ThreadMan\Reply';
     const ChannelTbl = 'Happy\ThreadMan\Channel';
+    const ActivityTbl = 'Happy\ThreadMan\Activity';
     
     public function signIn($user = null){
         $user = $user ?: create('App\User');
