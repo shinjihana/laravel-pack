@@ -41,4 +41,12 @@ trait Favoritable
     {
         return $this->favorites->count();
     }
+
+    /**
+     * Set relationship to table that have related
+     */
+    public function favorites()
+    {
+        return $this->morphMany(Favorite::class, 'favorited');
+    }
 }

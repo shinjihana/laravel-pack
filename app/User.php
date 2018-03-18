@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Happy\ThreadMan\UserThreadMan;
+use Happy\ThreadMan\Activity;
 
 class User extends Authenticatable
 {
@@ -34,5 +35,10 @@ class User extends Authenticatable
     public function getRouteKeyName()
     {
         return 'name';
+    }
+
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
     }
 }
