@@ -7,6 +7,9 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+use Illuminate\Support\Carbon;
+use Happy\ThreadMan\Activity;
+
 class ActivityTest extends TestCase
 {
 
@@ -38,5 +41,26 @@ class ActivityTest extends TestCase
         $reply = create(self::ReplyTbl);
 
         $this->assertEquals(2, \Happy\ThreadMan\Activity::count());
+    }
+
+    function test_it_fetches_a_feed_for_any_user()
+    {
+        //Given we have a thread
+        $this->signIn();
+
+        create(self::ThreadTbl, ['user_id' => auth()->id()]);
+        //And another thread from a week ago
+        create(self::ThreadTbl, [
+                'user_id'       => auth()->id(),
+                'created_at'    => Carbon::now()->subWeek()
+                ]);
+        //when we fetch their feed 
+        $feed = Activity::feed(auth()->user());
+
+        dd($feed->toArray());
+        //then it should be returned in the proper format
+        $this->assertTrue($feed->keys()->contains(
+            Carbon::now()->format('Y-m-d')
+        ));
     }
 }
