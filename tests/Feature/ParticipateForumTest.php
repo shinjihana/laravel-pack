@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class ParticipateForum extends TestCase
+class ParticipateForumTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -50,4 +50,29 @@ class ParticipateForum extends TestCase
         //302 -> have a redirect
         $this->assertEquals(302, $response->getStatusCode());
     }
+
+    function test_unauthorized_users_cannot_delete_replies()
+    {
+
+        $reply = create(self::ReplyTbl);
+
+        $this->delete("/replies/{$reply->id}")
+                ->assertRedirect('login');
+
+        $this->signIn()
+             ->delete("/replies/{$reply->id}")
+             ->assertStatus(403);
+    }
+
+    public function test_authorized_can_delete_replies()
+    {
+        $this->signIn();
+
+        $reply = create(self::ReplyTbl, ['user_id' => auth()->id()]);
+
+        $this->delete("/replies/{$reply->id}");
+
+        $this->assertDatabaseMissing('replies', ['id' => $reply->id]);
+    }
 }
+

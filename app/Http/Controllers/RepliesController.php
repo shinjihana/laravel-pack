@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Happy\ThreadMan\Thread;
+use Happy\ThreadMan\Reply;
 
 class RepliesController extends Controller
 {
@@ -87,11 +88,15 @@ class RepliesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Thread  $thread
+     * @param  \App\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy(Reply $reply)
     {
-        //
+        $this->authorize('update', $reply);
+
+        $reply->delete();
+
+        return back();
     }
 }
