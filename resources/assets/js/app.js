@@ -15,7 +15,14 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+/**setting event by hoachan */
+window.events = new Vue();  // vue.$on or Vue.$emit excute
+
+window.flash = function(message){
+    window.events.$emit('flash', message);
+};
+
+Vue.component('flash', require('./components/Flash.vue'));
 
 const app = new Vue({
     el: '#app'
