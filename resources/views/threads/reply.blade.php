@@ -1,39 +1,56 @@
-<div id="reply-{{ $reply->id }}" class="card mt-2">
-    <div class="card-header bg-success">
-        <div class="d-flex">
-            <div>
-                <a href="/profiles/{{ $reply->owner->name }}" class="text-white">
-                    {{ $reply->owner->name }}
-                </a>
-                said {{ $reply->created_at->diffForHumans() }}...
-            </div>
-            <div class="ml-auto">
-                <div class="d-flex">
-                    <div>
-                        <form method="POST" action="/replies/{{$reply->id}}/favorites">
-                            {{ csrf_field()}}
-                            <button
-                                type="submit" class="btn btn-primary"
-                                {{ $reply->isFavorited() ?  'disabled' : '' }}
-                            >
-                                {{ $reply->favorites_count}} Like
-                            </button>
-                        </form>
+<reply :attributes="{{ $reply }}" inline-template>
+    <div id="reply-{{ $reply->id }}" class="card mt-2">
+        <div class="card-header bg-success">
+            <div class="d-flex">
+                <div>
+                    <a href="/profiles/{{ $reply->owner->name }}" class="text-white">
+                        {{ $reply->owner->name }}
+                    </a>
+                    said {{ $reply->created_at->diffForHumans() }}...
+                </div>
+                <div class="ml-auto">
+                    <div class="d-flex">
+                        <div>
+                            <form method="POST" action="/replies/{{$reply->id}}/favorites">
+                                {{ csrf_field()}}
+                                <button
+                                    type="submit" class="btn btn-primary"
+                                    {{ $reply->isFavorited() ?  'disabled' : '' }}
+                                >
+                                    {{ $reply->favorites_count}} Like
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="card-body">
+            <div v-if="editting">
+                <div class="form-group">
+                    <label for="edit">Edit</label>
+                    <textarea
+                        name="edit" id=""
+                        rows="3" class="form-control"
+                        v-model="body"
+                    ></textarea>
+                </div>
+                <button class="btn btn-primary" @click="update">Update</button>
+                <button class="btn btn-xs" @click="editting = false">Cancel</button>
+            </div>
+            <div v-else="" v-text="body"></div>
+        </div>
+        @can('update', $reply)
+        <div class="card-header">
+            <div class="d-flex">
+                <button class="btn btn-xs mr-2" @click="editting = true">Edit</button>
+                <form method="POST" action="/replies/{{ $reply->id }}">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button type="submit" class="btn btn-danger bt-xs">Delete</button>
+                </form>
+            </div>
+        </div>
+        @endcan
     </div>
-    <div class="card-body">
-        {{ $reply->body }}
-    </div>
-    @can('update', $reply)
-    <div class="card-header">
-        <form method="POST" action="/replies/{{ $reply->id }}">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <button type="submit" class="btn btn-danger bt-xs">Delete</button>
-        </form>
-    </div>
-    @endcan
-</div>
+</reply>

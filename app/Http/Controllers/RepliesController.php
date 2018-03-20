@@ -80,9 +80,11 @@ class RepliesController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thread $thread)
+    public function update(Reply $reply)
     {
-        //
+        $this->authorize('update', $reply);
+        
+        $reply->update(request(['body']));
     }
 
     /**
