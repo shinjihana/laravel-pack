@@ -12,6 +12,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script>
+        window.App = {!! json_encode([
+                'csrfToken' => csrf_token(),
+                'signedIn'  => Auth::check(),
+                'user'      => Auth::user(),
+            ]) !!}
+    </script>
 </head>
 <body style="padding-bottom : 20px;">
     <div id="app">

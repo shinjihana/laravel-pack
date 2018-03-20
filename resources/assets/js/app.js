@@ -18,14 +18,29 @@ window.Vue = require('vue');
 /**setting event by hoachan */
 window.events = new Vue();  // vue.$on or Vue.$emit excute
 
+/**setting global function ( it can easily call everywher that you need) */
 window.flash = function(message){
     window.events.$emit('flash', message);
 };
 
-Vue.component('flash', require('./components/common/Flash.vue'));
-Vue.component('favorite', require('./components/common/Favorite.vue'));
+window.Vue.prototype.authorize = function (handler){
+    //Additional admin privileges.
+    let user = window.App.user;
 
-Vue.component('reply', require('./components/threads/Reply.vue'));
+    return (! user) ? handler(user) : false;
+}
+
+/**Common Components */
+Vue.component('flash', require('./components/common/Flash.vue'));
+// Vue.component('favorite', require('./components/common/Favorite.vue'));
+
+/**Thread Components */
+// Vue.component('reply', require('./components/threads/Reply.vue'));
+// Vue.component('replies', require('./components/threads/Replies.vue'));
+
+/**Pages Components */
+Vue.component('thread-view', require('./pages/Thread.vue'));
+
 const app = new Vue({
     el: '#app'
 });
