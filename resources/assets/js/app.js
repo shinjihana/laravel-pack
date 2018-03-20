@@ -22,9 +22,10 @@ window.flash = function(message){
     window.events.$emit('flash', message);
 };
 
-Vue.component('flash', require('./components/Flash.vue'));
-Vue.component('reply', require('./components/threads/Reply.vue'));
+Vue.component('flash', require('./components/common/Flash.vue'));
+Vue.component('favorite', require('./components/common/Favorite.vue'));
 
+Vue.component('reply', require('./components/threads/Reply.vue'));
 const app = new Vue({
     el: '#app'
 });

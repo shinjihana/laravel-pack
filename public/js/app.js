@@ -13889,9 +13889,10 @@ window.flash = function (message) {
   window.events.$emit('flash', message);
 };
 
-Vue.component('flash', __webpack_require__(39));
-Vue.component('reply', __webpack_require__(52));
+Vue.component('flash', __webpack_require__(57));
+Vue.component('favorite', __webpack_require__(62));
 
+Vue.component('reply', __webpack_require__(52));
 var app = new Vue({
   el: '#app'
 });
@@ -47105,97 +47106,9 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(40)
-}
-var normalizeComponent = __webpack_require__(45)
-/* script */
-var __vue_script__ = __webpack_require__(46)
-/* template */
-var __vue_template__ = __webpack_require__(47)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Flash.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-24005b09", Component.options)
-  } else {
-    hotAPI.reload("data-v-24005b09", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(41);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(43)("5992d74f", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24005b09\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Flash.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-24005b09\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Flash.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(42)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.alert-flash {\n    position: fixed;\n    right: 25px;\n    bottom: 25px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 39 */,
+/* 40 */,
+/* 41 */,
 /* 42 */
 /***/ (function(module, exports) {
 
@@ -47648,89 +47561,8 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 46 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['message'],
-    data: function data() {
-        return {
-            body: '',
-            show: false
-        };
-    },
-    created: function created() {
-        var _this = this;
-
-        if (this.message) {
-            this.flash(this.message);
-        }
-
-        window.events.$on('flash', function (message) {
-            return _this.flash(message);
-        });
-    },
-
-    methods: {
-        flash: function flash(message) {
-            this.body = message;
-            this.show = true;
-
-            this.hide();
-        },
-        hide: function hide() {
-            var _this2 = this;
-
-            setTimeout(function () {
-                _this2.show = false;
-            }, 3000);
-        }
-    },
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
-});
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      directives: [
-        { name: "show", rawName: "v-show", value: _vm.show, expression: "show" }
-      ],
-      staticClass: "alert-flash alert alert-success",
-      attrs: { role: "alert" }
-    },
-    [_c("strong", [_vm._v("Success !")]), _vm._v(_vm._s(_vm.body) + "\n")]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-24005b09", module.exports)
-  }
-}
-
-/***/ }),
+/* 46 */,
+/* 47 */,
 /* 48 */
 /***/ (function(module, exports) {
 
@@ -47825,7 +47657,7 @@ exports = module.exports = __webpack_require__(42)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47836,12 +47668,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_Favorite_vue__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_Favorite_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__common_Favorite_vue__);
 //
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['attributes'],
+    components: { Favorite: __WEBPACK_IMPORTED_MODULE_0__common_Favorite_vue___default.a },
     data: function data() {
         return {
             editting: false,
@@ -47889,6 +47725,852 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-bbc448e0", module.exports)
   }
 }
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(58)
+}
+var normalizeComponent = __webpack_require__(45)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\common\\Flash.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8883cc14", Component.options)
+  } else {
+    hotAPI.reload("data-v-8883cc14", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(59);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(43)("947e33e6", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8883cc14\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Flash.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8883cc14\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Flash.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(42)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.alert-flash {\n    position: fixed;\n    right: 25px;\n    bottom: 25px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['message'],
+    data: function data() {
+        return {
+            body: '',
+            show: false
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        if (this.message) {
+            this.flash(this.message);
+        }
+
+        window.events.$on('flash', function (message) {
+            return _this.flash(message);
+        });
+    },
+
+    methods: {
+        flash: function flash(message) {
+            this.body = message;
+            this.show = true;
+
+            this.hide();
+        },
+        hide: function hide() {
+            var _this2 = this;
+
+            setTimeout(function () {
+                _this2.show = false;
+            }, 3000);
+        }
+    },
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    }
+});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      directives: [
+        { name: "show", rawName: "v-show", value: _vm.show, expression: "show" }
+      ],
+      staticClass: "alert-flash alert alert-success",
+      attrs: { role: "alert" }
+    },
+    [_c("strong", [_vm._v("Success !")]), _vm._v(_vm._s(_vm.body) + "\n")]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8883cc14", module.exports)
+  }
+}
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(45)
+/* script */
+var __vue_script__ = __webpack_require__(63)
+/* template */
+var __vue_template__ = __webpack_require__(64)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\common\\Favorite.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5de90006", Component.options)
+  } else {
+    hotAPI.reload("data-v-5de90006", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glyphicons__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glyphicons___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_glyphicons__);
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['reply'],
+    data: function data() {
+        return {
+            count: this.reply.favoritesCount,
+            active: this.reply.isFavorited,
+            heartIcon: __WEBPACK_IMPORTED_MODULE_0_glyphicons___default.a.heart
+        };
+    },
+
+    computed: {
+        classes: function classes() {
+            return ['btn', this.active ? 'btn-primary' : 'btn-default'];
+        },
+        endpoint: function endpoint() {
+            return '/replies/' + this.reply.id + '/favorites';
+        }
+    },
+    created: function created() {
+        //initializing anything
+    },
+
+    methods: {
+        toggle: function toggle() {
+            this.active ? this.destroy() : this.create();
+        },
+        destroy: function destroy() {
+            axios.delete(this.endpoint); //created the endpoint
+            this.active = false;
+            this.count--;
+        },
+        create: function create() {
+            axios.post(this.endpoint); //created the endpoint
+            this.active = true;
+            this.count++;
+        }
+    }
+});
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    {
+      class: _vm.classes,
+      attrs: { type: "submit" },
+      on: { click: _vm.toggle }
+    },
+    [
+      _c("span", { staticClass: "glyphicon glyphicon-heart" }, [
+        _vm._v(_vm._s(_vm.heartIcon))
+      ]),
+      _vm._v(" "),
+      _c("span", { domProps: { textContent: _vm._s(_vm.count) } })
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5de90006", module.exports)
+  }
+}
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+﻿module.exports = {
+	ain: 'ᴥ',
+	airplane: '✈️',
+	alarm: '⏰',
+	alien: '👽',
+	anchor: '⚓',
+	ant: '🐜',
+	apple: '🍎',
+	appleGreen: '🍏',
+	appleRed: '🍎',
+	aquarius: '♒',
+	aries: '♈',
+	arrowW: '←',
+	arrowL: '←',
+	arrowNW: '↖',
+	arrowN: '↑',
+	arrowU: '↑',
+	arrowNE: '↗',
+	arrowE: '→',
+	arrowR: '→',
+	arrowSE: '↘',
+	arrowS: '↓',
+	arrowD: '↓',
+	arrowSW: '↙',
+	arrowTriD: '▼',
+	arrowTriL: '◀',
+	arrowTriR: '▶',
+	arrowTriU: '▲',
+	arrowTriDoubleD: '⏬',
+	arrowTriDoubleL: '⏪',
+	arrowTriDoubleLEnd: '⏮',
+	arrowTriDoubleR: '⏩',
+	arrowTriDoubleREnd: '⏮',
+	arrowTriDoubleU: '⏫',
+	arrowTriSmD: '🔽',
+	arrowTriSmU: '🔼',
+	arrowCircleL: '↶',
+	arrowCircleR: '↷',
+	arrowCircleFull: '⟳',
+	arrowDoubleL: '«',
+	arrowDoubleR: '»',
+	arrowRefresh: '↺',
+	arrowCompassR: '➢',
+	arrowCompassInvertedR: '➣',
+	attachment: '📎',
+	aubergine: '🍆',
+	avocado: '🥑',
+	balloon: '🎈',
+	balloonSpeech: '💬',
+	balloonThought: '💭',
+	bank: '🏛',
+	banknote: '💵',
+	banknoteEuro: '💶',
+	banknotePound: '💷',
+	banknoteYen: '💴',
+	banana: '🍌',
+	bang: '💥',
+	bat: '🦇',
+	bearFace: '🐻',
+	bee: '🐝',
+	bell: '🔔',
+	bellCancel: '🔕',
+	bomb: '💣',
+	book: '📕',
+	books: '📚',
+	bookBlue: '📘',
+	bookGreen: '📗',
+	bookOpen: '📖',
+	bookOrange: '📙',
+	bookRed: '📕',
+	bookmark: '🔖',
+	bookmarks: '📑',
+	bird: '🐦',
+	birthdayCake: '🎂',
+	bread: '🍞',
+	bride: '👰',
+	bug: '🐛',
+	bus: '🚍',
+	butterfly: '🦋',
+	burrito: '🌯',
+	cactus: '🌵',
+	cake: '🍰',
+	calendar: '📅',
+	calendarSpiral: '🗓',
+	calendarTearOff: '📆',
+	camel: '🐫',
+	camelDromedary: '🐪',
+	camelBactrian: '🐫',
+	cancel: '✘',
+	cancer: '♋',
+	candle: '🕯',
+	candy: '🍬',
+	capricorn: '♑',
+	car: '🚘',
+	carouselHorse: '🎠',
+	carrot: '🥕',
+	castle: '🏰',
+	cat: '🐈',
+	catFace: '🐱',
+	caterpillar: '🐛',
+	chartBar: '📊',
+	chartDown: '',
+	chartUp: '📈',
+	check: '√',
+	checkHeavy: '✔️',
+	checkHeavyWhite: '✅',
+	checkBallot: '☑',
+	checkeredFlag: '🏁',
+	cheese: '🧀',
+	cherry: '🍒',
+	chessKingB: '♚',
+	chessQueenB: '♛',
+	chessRookB: '♜',
+	chessBishopB: '♝',
+	chessNightB: '♞',
+	chessPawnB: '♟',
+	chessKingW: '♔',
+	chessQueenW: '♕',
+	chessRookW: '♖',
+	chessBishopW: '♗',
+	chessNightW: '♘',
+	chessPawnW: '♘',
+	chestnut: '🌰',
+	chick: '🐤',
+	chickFront: '🐥',
+	chicken: '🐔',
+	chipmunk: '🐿',
+	chocolate: '🍫',
+	church: '⛪',
+	city: '🏙',
+	cityDusk: '🌆',
+	citySunset: '🌇',
+	circleBlackWhite: '◑',
+	circus: '🎪',
+	clover: '☘',
+	clown: '🤡',
+	cloud: '☁',
+	clipboard: '📋',
+	coffee: '☕',
+	coffin: '⚰',
+	comet: '☄',
+	compression: '🗜',
+	controlKnobs: '🎛',
+	convenienceStore: '🏪',
+	cookie: '🍪',
+	copyright: '©',
+	cowFace: '🐮',
+	creditCard: '💳',
+	crocodile: '🐊',
+	cross: '×',
+	crossHeavy: '✖️',
+	crossedFlags: '🎌',
+	crossedSwords: '⚔',
+	crown: '♕',
+	cucumber: '🥒',
+	dagger: '🗡',
+	deer: '🦌',
+	departmentStore: '🏬',
+	diamond: '💎',
+	dog: '🐕',
+	dogFace: '🐶',
+	dolphin: '🐬',
+	donut: '🍩',
+	door: '🚪',
+	dot: '•',
+	dragon: '🐉',
+	droplet: '💧',
+	dress: '👗',
+	drums: '🥁',
+	duck: '🦆',
+	dumpling: '🥟',
+	eagle: '🦅',
+	edit: '✎',
+	egg: '🥚',
+	eightball: '➑',
+	elephant: '🐘',
+	email: '📧',
+	eye: '👁',
+	eyeglasses: '👓',
+	eyes: '👀',
+	fax: '📠',
+	female: '♀',
+	females: '⚢',
+	ferriswheel: '🎡',
+	ferry: '⛴',
+	filmCamera: '🎥',
+	filmFrames: '🎞',
+	filmProjector: '📽',
+	fish: '🐟',
+	fishTropical: '🐠',
+	fishingPole: '🎣',
+	fire: '🔥',
+	fireworks: '🎆',
+	flames: '🔥',
+	flower: '⚘',
+	flowers: '💐',
+	flowerRose: '🌹',
+	flowerSun: '🌻',
+	flowerSymbol: '߷',
+	flowerTulip: '🌷',
+	forkKnife: '🍴',
+	forkKnifePlate: '🍽',
+	fountain: '⛲',
+	fourLeafClover: '🍀',
+	foxFace: '🦊',
+	framedPicture: '🖼',
+	fries: '🍟',
+	frogFace: '🐸',
+	gear: '⚙',
+	gemini: '♊',
+	ghost: '👻',
+	gift: '🎁',
+	globe: '🌎',
+	globeAmerica: '🌎',
+	globeAsiaAus: '🌏',
+	globeEurAfr: '🌍',
+	globeMeridians: '🌐',
+	goat: '🐐',
+	gorilla: '🦍',
+	grapes: '🍇',
+	groom: '🤵',
+	guitar: '🎸',
+	halloween: '🎃',
+	hamburger: '🍔',
+	hammer: '🔨',
+	hammerPick: '⚒',
+	hammerSickle: '☭',
+	hammerWrench: '🛠',
+	hamsterFace: '🐹',
+	handVictory: '✌',
+	handshake: '🤝',
+	handwriting: '✍',
+	hatching: '🐣',
+	heart: '❤️',
+	heartArrow: '💘',
+	heartBeating: '💓',
+	heartBlue: '💙',
+	heartBroken: '💔',
+	heartDeco: '💟',
+	heartFlower: '❦',
+	heartFlowerL: '❧',
+	heartFlowerR: '☙',
+	heartGreen: '💚',
+	heartGrowing: '💗',
+	heartLight: '♥',
+	heartManMan: '👨‍❤️‍👨',
+	heartPurple: '💜',
+	heartRibbon: '💝',
+	heartSmile: '😍',
+	heartSparkling: '💖',
+	heartUpsideDown: 'ᜊ',
+	heartWomanWoman: '👩‍❤️‍👩',
+	heartYellow: '💛',
+	hearts: '💕',
+	heartsRevolving: '💞',
+	herb: '🌿',
+	hole: '🕳',
+	home: '🏠',
+	homes: '🏘',
+	homeGarden: '🏡',
+	honey: '🍯',
+	horn: '📯',
+	horse: '🐎',
+	horseFace: '🐴',
+	horseRacing: '🏇',
+	hot: '🔥',
+	hotdog: '🌭',
+	hotPepper: '🌶',
+	hotel: '🏨',
+	hotsprings: '♨',
+	hourglass: '⌛',
+	hourglassRunning: '⏳',
+	iceCream: '🍨',
+	iceCreamSoft: '🍦',
+	iceSkate: '⛸',
+	jeans: '👖',
+	joystick: '🕹',
+	joypad: '🎮',
+	key: '🔑',
+	keyOld: '🗝',
+	keyboard: '⌨',
+	kiwi: '🥝',
+	koala: '🐨',
+	label: '🏷',
+	ladybird: '🐞',
+	leaf: '🍂',
+	leafMaple: '🍁',
+	leafWind: '🍃',
+	lemon: '🍋',
+	leo: '♌',
+	leopard: '🐆',
+	levelSlider: '🎚',
+	libra: '♎',
+	link: '🔗',
+	lionFace: '🦁',
+	lizard: '🦎',
+	lock: '🔒',
+	lockClosed: '🔒',
+	lockClosedWithKey: '🔐',
+	lockOpen: '🔓',
+	love: '💕',
+	loveCouple: '💑',
+	loveLetter: '💌',
+	loveHotel: '🏩',
+	mail: '✉',
+	male: '♂',
+	males: '⚣',
+	man: '👨',
+	mansShoe: '👞',
+	melon: '🍈',
+	menu: '☰',
+	magnifyingGlass: '🔍',
+	map: '🗺',
+	memo: '📝',
+	microphone: '🎙',
+	mobilePhone: '📱',
+	monkey: '🐒',
+	monkeyFace: '🐵',
+	monkeyNoEvilHear: '🙉',
+	monkeyNoEvilSee: '🙈',
+	monkeyNoEvilSpeak: '🙊',
+	moon: '○',
+	moonNew: '●',
+	moonFirst: '◐',
+	moonFull: '○',
+	moonThird: '◑',
+	mosque: '🕌',
+	motorboat: '🛥',
+	mountain: '⛰',
+	mountFuji: '🗻',
+	mouse: '🐁',
+	mouseFace: '🐭',
+	mushroom: '🍄',
+	music: '🎶',
+	musicalKeyboard: '🎹',
+	musicalNote: '♪',
+	musicalNoteDouble: '♫',
+	nameBadge: '📛',
+	neckTie: '👔',
+	newspaper: '📰',
+	noEntry: '🚫',
+	noEntryUnder18: '🔞',
+	nut: '🌰',
+	nutAndBolt: '🔩',
+	octopus: '🐙',
+	office: '🏢',
+	ohm: 'Ω',
+	ok: '✔',
+	oneHalf: '½',
+	oneThird: '⅓',
+	oneFourth: '¼',
+	oneFifth: '⅕',
+	oneSixth: '⅙',
+	oneSeventh: '⅐',
+	oneEight: '⅛',
+	ophiuchus: '⛎',
+	owl: '🦉',
+	pageCurl: '📃',
+	pancakes: '🥞',
+	pandaFace: '🐼',
+	paperclip: '📎',
+	pause: '⏸',
+	peace: '☮',
+	peaceDove: '🕊',
+	peach: '🍑',
+	pear: '🍐',
+	pencil: '✎',
+	penguin: '🐧',
+	phone: '☎',
+	phoneWhite: '☏',
+	pick: '⛏',
+	pig: '🐖',
+	pigFace: '🐷',
+	pigNose: '🐽',
+	pileOfPoo: '💩',
+	pill: '💊',
+	pin: '📌',
+	pinRound: '📍',
+	pineapple: '🍍',
+	pisces: '♓',
+	pistol: '🔫',
+	play: '⏵',
+	plus: '✚',
+	pointL: '☚',
+	pointR: '☛',
+	pointU: '☝',
+	pointD: '☟',
+	popcorn: '🍿',
+	potato: '🥔',
+	prayerBeads: '📿',
+	pregnant: '🤰',
+	priceTag: '🏷',
+	printer: '🖨',
+	question: '❓',
+	rabbit: '🐇',
+	rabbitFace: '🐰',
+	radio: '📻',
+	rainbow: '🌈',
+	rat: '🐀',
+	record: '⏺',
+	recycling: '♻',
+	registered: '®',
+	rhinocerus: '🦏',
+	ribbon: '🎀',
+	ring: '💍',
+	rooster: '🐓',
+	rollercoaster: '🎢',
+	ruler: '📏',
+	rulerTriangular: '📐',
+	sagittarius: '♐',
+	sailboat: '⛵',
+	satellite: '🛰',
+	satelliteAntenna: '📡',
+	saxophone: '🎷',
+	scales: '⚖',
+	scorpius: '♏',
+	school: '🏫',
+	scissors: '✂',
+	scroll: '📜',
+	seedling: '🌱',
+	shamrock: '☘',
+	shark: '🦈',
+	sheep: '🐑',
+	shield: '🛡',
+	ship: '🚢',
+	shipPassengers: '🛳',
+	shirt: '👕',
+	shoppingBags: '🛍',
+	shoppingTrolley: '🛒',
+	shrimp: '🦐',
+	skull: '💀',
+	skullAndBones: '☠',
+	smile: '☺',
+	smoking: '🚬',
+	smokingForbidden: '🚭',
+	snail: '🐌',
+	snake: '🐍',
+	snow: '❆',
+	snowman: '☃',
+	snowmanWithoutSnow: '⛄',
+	snowCappedMountain: '🏔',
+	spaghetti: '🍝',
+	speaker: '🔈',
+	speakerCancel: '🔇',
+	speakerSound: '🔉',
+	speakerSoundLoud: '🔊',
+	speedboat: '🚤',
+	spider: '🕷',
+	spiderWeb: '🕸',
+	spoon: '🥄',
+	squid: '🦑',
+	star: '★',
+	starOpen: '☆',
+	starBorder: '✭',
+	starCircle: '✪',
+	starCircleSmall: '⍟',
+	starCrescent: '☪',
+	starDavid: '✡',
+	starScience: '⚝',
+	starTopo: '❉',
+	starDeco: '❋',
+	starDeco2: '✺',
+	starDeco3: '✹',
+	starFalling: '🌠',
+	starShining: '🌟',
+	star3D: '✰',
+	stop: '⏹',
+	stopwatch: '⏱',
+	strawberry: '🍓',
+	suitClubs: '♣',
+	suitDiamonds: '♦',
+	suitHearts: '♥',
+	suitSpades: '♠',
+	sun: '☀',
+	sunglasses: '🕶',
+	sunrise: '🌅',
+	sunriseMountain: '🌄',
+	sunriseCity: '🌇',
+	sushi: '🍣',
+	synagogue: '🕍',
+	taco: '🌮',
+	tangerine: '🍊',
+	taurus: '♉',
+	telephone: '☎️',
+	telephoneReceiver: '📞',
+	television: '📺',
+	thermometer: '🌡',
+	ticket: '🎫',
+	ticketAdmission: '🎟',
+	tigerFace: '🐯',
+	tomato: '🍅',
+	topHat: '🎩',
+	tractor: '🚜',
+	trademark: '™',
+	tree: '🌳',
+	treeChristmas: '🎄',
+	treePalm: '🌴',
+	treePine: '🌲',
+	treeTanabata: '🎋',
+	tricolon: '⁝',
+	trumpet: '🎺',
+	turkey: '🦃',
+	turtle: '🐢',
+	umbrella: '☂',
+	umbrellaRain: '☔',
+	unicorn: '🦄',
+	video: '',
+	videoCamera: '📹',
+	videoCassette: '📼',
+	videoGame: '🎮',
+	violin: '🎻',
+	virgo: '♍',
+	vulcano: '🌋',
+	warning: '⚠️',
+	wastebasket: '🗑',
+	watch: '⌚',
+	watermelon: '🍉',
+	waterWave: '🌊',
+	wedding: '💒',
+	whale: '🐋',
+	wheelchair: '♿',
+	wolfFace: '🐺',
+	woman: '👩',
+	womansHat: '👒',
+	womansClothes: '👚',
+	womansBoots: '👢',
+	womansShoes: '👠',
+	wrench: '🔧',
+	yinyang: '☯',
+}
+
 
 /***/ })
 /******/ ]);

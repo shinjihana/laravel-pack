@@ -2,8 +2,10 @@
 
 </template>
 <script>
+    import Favorite from '../common/Favorite.vue';
     export default {
         props : ['attributes'],
+        components : { Favorite },
         data() {
             return {
                 editting    : false,

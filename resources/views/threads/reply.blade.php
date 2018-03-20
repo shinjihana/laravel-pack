@@ -11,15 +11,7 @@
                 <div class="ml-auto">
                     <div class="d-flex">
                         <div>
-                            <form method="POST" action="/replies/{{$reply->id}}/favorites">
-                                {{ csrf_field()}}
-                                <button
-                                    type="submit" class="btn btn-primary"
-                                    {{ $reply->isFavorited() ?  'disabled' : '' }}
-                                >
-                                    {{ $reply->favorites_count}} Like
-                                </button>
-                            </form>
+                            <favorite :reply="{{ $reply }}"></favorite>
                         </div>
                     </div>
                 </div>
