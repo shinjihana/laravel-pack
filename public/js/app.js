@@ -47825,7 +47825,7 @@ exports = module.exports = __webpack_require__(42)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47851,6 +47851,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         update: function update() {
+            // $("#reply-"+this.attributes.id).fadeOut(200);
             axios.patch('/replies/' + this.attributes.id, {
                 body: this.body
             });
@@ -47858,6 +47859,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.editting = false;
 
             flash('Updated! ');
+        },
+        destroy: function destroy() {
+            axios.delete('/replies/' + this.attributes.id);
+
+            $(this.$el).fadeOut(300, function () {
+                flash('Your reply was deleted');
+            });
         }
     }
 });

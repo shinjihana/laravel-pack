@@ -44,11 +44,7 @@
         <div class="card-header">
             <div class="d-flex">
                 <button class="btn btn-xs mr-2" @click="editting = true">Edit</button>
-                <form method="POST" action="/replies/{{ $reply->id }}">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
-                    <button type="submit" class="btn btn-danger bt-xs">Delete</button>
-                </form>
+                <button class="btn btn-xs btn-danger mr-2" @click="destroy">Delete</button>
             </div>
         </div>
         @endcan
