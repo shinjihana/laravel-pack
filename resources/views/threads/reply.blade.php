@@ -8,13 +8,15 @@
                     </a>
                     said {{ $reply->created_at->diffForHumans() }}...
                 </div>
-                <div class="ml-auto">
-                    <div class="d-flex">
-                        <div>
-                            <favorite :reply="{{ $reply }}"></favorite>
+                @if(Auth::check())
+                    <div class="ml-auto">
+                        <div class="d-flex">
+                            <div>
+                                <favorite :reply="{{ $reply }}"></favorite>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
         <div class="card-body">

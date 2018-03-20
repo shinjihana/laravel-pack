@@ -11,14 +11,16 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                   @foreach($activities as $date => $activity)
+                   @forelse($activities as $date => $activity)
                         <h3 class="card-title">{{$date}}</h3>
                         @foreach($activity as $record)
                             @if (view()->exists("profiles.activities.{$record->type}"))
                                 @include ("profiles.activities.{$record->type}", ['activity' => $record])
                             @endif
                         @endforeach
-                   @endforeach
+                    @empty
+                    <p>There is no activity for this user</p>
+                   @endforelse
                 </div>
             </div>
         </div>
