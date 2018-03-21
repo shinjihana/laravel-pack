@@ -83,7 +83,19 @@ class ReadThreadsTest extends TestCase
 
         $response = $this->getJson($thread->path(). '/replies')->json();
 
-        $this->assertCount(1, $response['data']);
+        $this->assertCount(2, $response['data']);
         $this->assertEquals(2, $response['total']);
+    }
+
+    public function test_user_can_filter_threads_by_those_are_answered()
+    {
+        $thread = create(self::ThreadTbl);
+
+        create(self::ReplyTbl, ['thread_id' => $thread->id]);
+
+        $response = $this->getJson('threads?unanswered=1')->json();
+
+        $this->assertCount(1, $response);
+
     }
 }

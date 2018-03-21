@@ -45,6 +45,7 @@
                                     <a class="nav-link" href="/threads?by={{ auth()->user()->name}}">マイレコード</a>
                                     @endif
                                     <a class="nav-link" href="/threads?popular=1">人気のレーコド</a>
+                                    <a class="nav-link" href="/threads?unanswered=1">返事しないレコード</a>
                                 </div>
                             </div>
 

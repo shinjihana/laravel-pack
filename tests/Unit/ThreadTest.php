@@ -63,6 +63,7 @@ class ThreadTest extends TestCase
 
         //Then they should be returned from most replies to least.
         // $response->assertSee($threadWithThreeReplies->title);
+        // dd($response);
         $this->assertEquals([3,2,0], array_column($response, 'replies_count'));
     }
 }

@@ -37,8 +37,9 @@ class ParticipateForumTest extends TestCase
         $this->assertEquals(302, $response->getStatusCode());
         
         //Then their reply shoud be visible on the page
-        $this->get($thread->path())
-             ->assertSee($reply->body);
+        $this->assertDatabaseHas('replies', ['body' => $reply->body]);
+
+        $this->assertEquals(2, $thread->refresh()->replies_count);
     }
 
     function test_unauthenticated_users_may_not_add_replies(){
