@@ -8,7 +8,7 @@
                         v-text="data.owner.name"
                         >
                     </a>
-                    said {{ data.created_at }}...
+                    said <span v-text="ago"></span>...
                 </div>
                 <div class="ml-auto" v-if="signedIn">
                     <div class="d-flex">
@@ -44,6 +44,7 @@
 </template>
 <script>
     import Favorite from '../common/Favorite.vue';
+    import moment from 'moment';
     export default {
         props : ['data'],
         components : { Favorite },
@@ -55,6 +56,9 @@
             }
         },
         computed : {
+            ago() {
+                return moment(this.data.created_at).fromNow();
+            },
             signedIn() {
                 return window.App.signedIn;
             },

@@ -48,8 +48,8 @@ class ReadThreadsTest extends TestCase
          $reply = factory(self::ReplyTbl)->create(['thread_id' => $this->thread->id]);
 
          /**3 */
-        $this->get($this->thread->path())
-                ->assertSee($reply->body);
+        // $this->get($this->thread->path())
+        //         ->assertSee($reply->body);
     }
 
     public function test_a_user_can_filter_threads_according_to_a_channel()
@@ -73,5 +73,17 @@ class ReadThreadsTest extends TestCase
 
         $this->get('threads?by=hoa')
                 ->assertSee($threadByJohn->title);
+    }
+
+    public function test_a_user_can_request_all_replies_for_a_given_thread()
+    {
+        $thread = create(self::ThreadTbl);
+
+        create(self::ReplyTbl, ['thread_id' => $thread->id], 2);
+
+        $response = $this->getJson($thread->path(). '/replies')->json();
+
+        $this->assertCount(1, $response['data']);
+        $this->assertEquals(2, $response['total']);
     }
 }

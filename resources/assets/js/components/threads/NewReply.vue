@@ -29,10 +29,10 @@
 </template>
 <script>
     export default {
-        props : ['endpoint'],
         data(){
             return {
                 body : '',
+                endpoint : location.pathname + '/replies',
             }
         },
         computed : {

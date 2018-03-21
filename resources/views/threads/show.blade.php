@@ -36,11 +36,9 @@
                     @endcan
                 </div>
                 
-                <replies :data="{{ $thread->replies }}" 
-                            @added="repliesCount++"            
-                            @removed="repliesCount--"></replies>
+                <replies @added="repliesCount++" @removed="repliesCount--"></replies>
                 
-                <div class="row justify-content-center mt-2">{{ $replies->links() }}</div>
+                {{--  <div class="row justify-content-center mt-2">{{ $replies->links() }}</div>  --}}
     
             </div>
             <div class="col-md-4 pl-0 d-none d-lg-block">
