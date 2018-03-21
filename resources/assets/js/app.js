@@ -26,8 +26,8 @@ window.flash = function(message){
 window.Vue.prototype.authorize = function (handler){
     //Additional admin privileges.
     let user = window.App.user;
-
-    return (! user) ? handler(user) : false;
+    
+    return user ? handler(user) : false;
 }
 
 /**Common Components */

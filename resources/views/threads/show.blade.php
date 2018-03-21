@@ -36,33 +36,12 @@
                     @endcan
                 </div>
                 
-                <replies :data="{{ $thread->replies }}" @removed="repliesCount--"></replies>
+                <replies :data="{{ $thread->replies }}" 
+                            @added="repliesCount++"            
+                            @removed="repliesCount--"></replies>
                 
                 <div class="row justify-content-center mt-2">{{ $replies->links() }}</div>
     
-                @if (auth()->check())
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <form method="POST" action="{{ $thread->path(). '/replies' }}">
-                                {{csrf_field()}}
-                                <div class="form-group">
-                                    <label for="body">コメント : </label>
-                                    <textarea 
-                                        required
-                                        name="body" id="" 
-                                        placeholder="コメントを入力してください。"
-                                        class="form-control" cols="30" rows="10">
-                                    </textarea>
-                                </div>
-                                <button type="submit" class="btn btn-defaul">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                @else
-                    <div class="card-header text-center bg-secondary text-white mt-3">
-                        <a href="{{ route('login') }}" class="text-white">コメントできるため、ログインしてください</a>
-                    </div>
-                @endif
             </div>
             <div class="col-md-4 pl-0 d-none d-lg-block">
                 <div class="card text-white">
