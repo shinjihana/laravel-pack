@@ -48,6 +48,9 @@
                             <a href="#" class="text-warning">{{ $thread->creator->name }}</a>,
                             and currently has <span v-text="repliesCount"></span> comments
                         </p>
+                        <p>
+                            <subscribe-button></subscribe-button>
+                        </p>
                     </div>
                 </div>
             </div>
