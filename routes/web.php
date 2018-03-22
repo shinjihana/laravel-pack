@@ -41,6 +41,9 @@ Route::patch('/replies/{reply}', 'RepliesController@update');
 
 /**============== Ending Processing Reply ==============*/
 
+/**========== Processing Subscription ==========*/
+Route::post('/threads/{channel}/{thread}/subscriptions', 'ThreadSubscriptionsController@store');
+/**========== Processing Subscription ==========*/
 /**
  * maybe use Route::resource('threads', 'ThreadsController');
  */
