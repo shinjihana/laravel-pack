@@ -66,4 +66,34 @@ class ThreadTest extends TestCase
         // dd($response);
         $this->assertEquals([3,2,0], array_column($response, 'replies_count'));
     }
+
+    public function test_a_thread_can_be_subscribe()
+    {
+        // Given we have a thread
+        $thread = create(self::ThreadTbl);
+        
+        // And a authenticated user
+        // $this->signIn();
+
+        // when the user subscribes to the thread
+        $thread->subscribe($userId = 1);
+
+        // Then we should be able to fetch all threads that users have subscribed to
+        // $user->subscriptions(); //u can also call it such as below
+        $this->assertEquals(
+            1, 
+            $thread->subscriptions()->where('user_id', $userId)->count()
+        );
+    }
+
+    public function test_a_thread_can_be_unsubscribed_from()
+    {
+        $thread = create(self::ThreadTbl);
+
+        $thread->subscribe($userId = 1);
+
+        $thread->unsubscribe($userId);
+
+        $this->assertCount(0, $thread->subscriptions);
+    }
 }
