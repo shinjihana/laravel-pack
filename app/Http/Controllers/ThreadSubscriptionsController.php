@@ -14,8 +14,23 @@ class ThreadSubscriptionsController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Add Subscription to current thread
+     * @Param channelID
+     * @Param Thread $thread
+     */
     public function store($channelId, Thread $thread)
     {
         $thread->subscribe();
+    }
+
+    /**
+     * Delete Subscription to current thread
+     * @Param channelID
+     * @Param Thread $thread
+     */
+    public function destroy($channelId, Thread $thread)
+    {
+        $thread->unsubscribe();
     }
 }

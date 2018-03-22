@@ -43,6 +43,7 @@ Route::patch('/replies/{reply}', 'RepliesController@update');
 
 /**========== Processing Subscription ==========*/
 Route::post('/threads/{channel}/{thread}/subscriptions', 'ThreadSubscriptionsController@store');
+Route::delete('/threads/{channel}/{thread}/subscriptions', 'ThreadSubscriptionsController@destroy');
 /**========== Processing Subscription ==========*/
 /**
  * maybe use Route::resource('threads', 'ThreadsController');
