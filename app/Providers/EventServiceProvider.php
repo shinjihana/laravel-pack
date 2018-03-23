@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        'Happy\ThreadMan\Events\ThreadHasNewReply' => [
+            'Happy\ThreadMan\Listeners\NofifyThreadSubscribes',
         ],
     ];
 
