@@ -12,10 +12,16 @@ class NotificationsTest extends TestCase
 
     use DatabaseMigrations;
 
-    function test_a_notification_is_prepared_when_a_subscribed_thread_receives_a_new_reply_not_by_current_user()
+    public function setUp()
     {
+        parent::setUp();
+
         $this->signIn();
 
+    }
+
+    function test_a_notification_is_prepared_when_a_subscribed_thread_receives_a_new_reply_not_by_current_user()
+    {
         $thread = create(self::ThreadTbl)->subscribe();
 
         //Then, each time a new reply is left
@@ -39,37 +45,23 @@ class NotificationsTest extends TestCase
 
     public function test_a_user_can_mark_a_notification_as_read()
     {
-        $this->signIn();
-
-        $thread = create(self::ThreadTbl)->subscribe();
-
-        $thread->addReply([
-            'user_id'   => create('App\User')->id,
-            'body'      => 'Some reply here'
-        ]);
+        create(\Illuminate\Notifications\DatabaseNotification::class);
 
         $user = auth()->user();
 
-        $this->assertCount(1, $user->refresh()->unreadNotifications);
-
-        $notifications = $user->unreadNotifications->first()->id;
-
-        $this->delete("/profiles/". $user->name. "/notifications/{$notifications}");
-
-        $this->assertCount(0, $user->fresh()->unreadNotifications);
-
+        tap(auth()->user(), function($user){
+            $this->assertCount(1, $user->refresh()->unreadNotifications);
+    
+            $this->delete("/profiles/". $user->name. "/notifications/".  $user->unreadNotifications->first()->id);
+    
+            $this->assertCount(0, $user->fresh()->unreadNotifications);
+    
+        });
     }
 
     function test_a_user_can_fetch_their_unread_notifications()
     {
-        $this->signIn();
-
-        $thread = create(self::ThreadTbl)->subscribe();
-
-        $thread->addReply([
-            'user_id'   => create('App\User')->id,
-            'body'      => 'Some reply here'
-        ]);
+        create(\Illuminate\Notifications\DatabaseNotification::class);
 
         $user = auth()->user();
 
@@ -77,4 +69,5 @@ class NotificationsTest extends TestCase
 
         $this->assertCount(1, $response);
     }
+
 }
