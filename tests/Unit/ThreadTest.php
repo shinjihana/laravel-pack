@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-
+use Illuminate\Notifications\Notification;
 class ThreadTest extends TestCase
 {
     use DatabaseMigrations;
@@ -96,4 +96,19 @@ class ThreadTest extends TestCase
 
         $this->assertCount(0, $thread->subscriptions);
     }
+
+    // public function test_a_thread_notifies_all_registered_subscribed_when_a_reply_is_add()
+    // {
+    //     Notification::fake();
+
+    //     $this->signIn()
+    //          ->subscribe()
+    //          ->thread
+    //          ->addReply([
+    //         'body'      => 'Foobar',
+    //         'user_id'   => 1
+    //         ]);
+
+    //     Notification::assertSendTo(auth()->user(), \Happy\ThreadMan\Notifications\ThreadWasUpdated::class);
+    // }
 }
