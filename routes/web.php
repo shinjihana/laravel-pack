@@ -49,8 +49,11 @@ Route::delete('/threads/{channel}/{thread}/subscriptions', 'ThreadSubscriptionsC
  * maybe use Route::resource('threads', 'ThreadsController');
  */
 
-/** Profile User */
+/** ==============Profile User============== */
 Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
+Route::delete('/profiles/{user}/notifications/{notification}', 'UserNotificationsController@destroy'); //notification
+Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index'); //notification
+/** ==============Profile User============== */
 
 /** Thread-Channel */
 // Route::get('/threads/{channel}', 'ChannelsController@index');
