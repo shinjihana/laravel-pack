@@ -31,8 +31,8 @@ window.Vue.prototype.authorize = function (handler){
 }
 
 /**Common Components */
-Vue.component('flash', require('./components/common/Flash.vue'));
-Vue.component('paginator', require('./components/common/Paginator.vue'));
+Vue.component('flash', require('./components/commons/Flash.vue'));
+Vue.component('paginator', require('./components/commons/Paginator.vue'));
 // Vue.component('favorite', require('./components/common/Favorite.vue'));
 
 /**Thread Components */

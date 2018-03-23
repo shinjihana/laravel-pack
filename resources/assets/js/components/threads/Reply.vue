@@ -43,7 +43,7 @@
     </div>
 </template>
 <script>
-    import Favorite from '../common/Favorite.vue';
+    import Favorite from '../commons/Favorite.vue';
     import moment from 'moment';
     export default {
         props : ['data'],
