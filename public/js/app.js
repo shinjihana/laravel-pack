@@ -65955,17 +65955,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['active'],
+    data: function data() {
+        return {
+            isActive: this.active
+        };
+    },
+
     computed: {
         classes: function classes() {
-            return ['btn', this.active ? 'btn-warning' : 'btn-default'];
+            return ['btn', this.isActive ? 'btn-warning' : 'btn-default'];
         }
     },
     methods: {
         subscribe: function subscribe() {
 
-            axios[this.active ? 'delete' : 'post'](location.pathname + '/subscriptions');
+            axios[this.isActive ? 'delete' : 'post'](location.pathname + '/subscriptions');
 
-            this.active = !this.active;
+            this.isActive = !this.isActive;
 
             flash('Subscribed');
         }
