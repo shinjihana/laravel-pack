@@ -119,4 +119,27 @@ class Thread extends Model
                     ->where('user_id', auth()->id())
                     ->exists();
     }
+
+    /**
+     * build thread has updated or not
+     * 
+     */
+    public function hasUpdatesFor($user = null)
+    {
+        // Look in the cache for the proper key.
+
+        //Compare that carbon instance with the $thread->update_at
+
+        /**========== Way 1 ===== call currently */
+        // $key = sprintf("users.%s.visit.%s", auth()->id(), $this->id);
+        /**========== Way 1 ===== call currently */
+
+        /**========== Way 2 ===== call by user  */
+        $user = $user ? : auth()->user();
+
+        $key = $user->visitedThreadCacheKey($this);
+        /**========== Way 2 ===== call by user */
+
+        return $this->updated_at > cache($key);
+    }
 }

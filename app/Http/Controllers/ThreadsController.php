@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Happy\ThreadMan\Thread;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 use Happy\ThreadMan\Channel;
 use Happy\ThreadMan\Filters\ThreadFilters;
@@ -75,6 +76,22 @@ class ThreadsController extends Controller
      */
     public function show($channelId, Thread $thread)
     {
+        // Record that the user visited this page
+
+        // Compare that carbon instance with the $thread->updated_at
+        
+        /** =========Way 1========= */
+        // $key = sprintf("users.%s.visit.%s", auth()->id(), $thread->id);
+
+        // cache()->forever($key, Carbon::now());
+        /** =========Way 1========= */
+
+        /** =========Way 2 - using read(thread)========= */
+        if (auth()->check()) {
+            auth()->user()->read($thread);
+        }
+        /** =========Way 2========= */
+
         // return $thread;
         return view('threads.show', compact('thread'));
     }

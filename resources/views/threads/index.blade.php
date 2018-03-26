@@ -15,7 +15,13 @@
                                 <div>
                                     <h2>
                                         <a href="{{ $thread->path() }}">
-                                            {{ $thread->title }}
+                                            @if ($thread->hasUpdatesFor(auth()->user()))
+                                                <strong>
+                                                    {{ $thread->title }}
+                                                </strong>
+                                            @else
+                                                {{ $thread->title }}
+                                            @endif
                                         </a>
                                     </h2>
                                 </div>
