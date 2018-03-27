@@ -40,7 +40,7 @@ class RepliesController extends Controller
      * @param Spam $spam
      * @return \Illuminate\Http\Response
      */
-    public function store($channelId, Thread $thread, Spam $spam)
+    public function store($channelId, Thread $thread)
     {
         $this->validateReply();
 
@@ -85,7 +85,7 @@ class RepliesController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update(Reply $reply, Spam $spam)
+    public function update(Reply $reply)
     {
         $this->authorize('update', $reply);
 
