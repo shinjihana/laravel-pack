@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Exception;
 
 class ParticipateForumTest extends TestCase
 {
@@ -100,6 +101,26 @@ class ParticipateForumTest extends TestCase
         $this->signIn()
              ->patch("/replies/{$reply->id}")
              ->assertStatus(403);
+    }
+
+    /**
+     * Test spam
+     */
+    public function test_replies_that_contain_spam_may_not_be_created()
+    {
+        $this->signIn();
+
+        $thread = create(self::ThreadTbl);
+
+        $reply = make(self::ThreadTbl, [
+            'body'  => 'Yahoo'
+        ]);
+
+        // $this->expectException(Exception::class);
+
+        $this->post($thread->path(). '/replies', $reply->toArray());
+
+
     }
 }
 

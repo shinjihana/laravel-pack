@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
-    'App\\Events\\ThreadHasNewReply' => $baseDir . '/app/Events/ThreadHasNewReply.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -28,7 +27,6 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
-    'App\\Listeners\\NofifyThreadSubscribes' => $baseDir . '/app/Listeners/NofifyThreadSubscribes.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
@@ -756,6 +754,7 @@ return array(
     'Happy\\ThreadMan\\RecordsActivity' => $baseDir . '/happy/thread-man/src/Models/RecordsActivity.php',
     'Happy\\ThreadMan\\Reply' => $baseDir . '/happy/thread-man/src/Models/Reply.php',
     'Happy\\ThreadMan\\ServiceProvider' => $baseDir . '/happy/thread-man/ServiceProvider.php',
+    'Happy\\ThreadMan\\Spam' => $baseDir . '/happy/thread-man/src/Spam/Spam.php',
     'Happy\\ThreadMan\\Thread' => $baseDir . '/happy/thread-man/src/Models/Thread.php',
     'Happy\\ThreadMan\\ThreadMan' => $baseDir . '/happy/thread-man/ThreadMan.php',
     'Happy\\ThreadMan\\ThreadSubscription' => $baseDir . '/happy/thread-man/src/Models/ThreadSubscription.php',
@@ -3588,6 +3587,7 @@ return array(
     'Tests\\Feature\\ParticipateForumTest' => $baseDir . '/tests/Feature/ParticipateForumTest.php',
     'Tests\\Feature\\ProfileTest' => $baseDir . '/tests/Feature/ProfileTest.php',
     'Tests\\Feature\\ReadThreadsTest' => $baseDir . '/tests/Feature/ReadThreadsTest.php',
+    'Tests\\Feature\\SpamTest' => $baseDir . '/tests/Feature/SpamTest.php',
     'Tests\\Feature\\SubscribeToThreadsTest' => $baseDir . '/tests/Feature/SubscribeToThreadsTest.php',
     'Tests\\TestCase' => $baseDir . '/tests/TestCase.php',
     'Tests\\Unit\\ActivityTest' => $baseDir . '/tests/Unit/ActivityTest.php',

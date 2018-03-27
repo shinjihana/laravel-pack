@@ -343,7 +343,6 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
-        'App\\Events\\ThreadHasNewReply' => __DIR__ . '/../..' . '/app/Events/ThreadHasNewReply.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -364,7 +363,6 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Listeners\\NofifyThreadSubscribes' => __DIR__ . '/../..' . '/app/Listeners/NofifyThreadSubscribes.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -1092,6 +1090,7 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'Happy\\ThreadMan\\RecordsActivity' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/RecordsActivity.php',
         'Happy\\ThreadMan\\Reply' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Reply.php',
         'Happy\\ThreadMan\\ServiceProvider' => __DIR__ . '/../..' . '/happy/thread-man/ServiceProvider.php',
+        'Happy\\ThreadMan\\Spam' => __DIR__ . '/../..' . '/happy/thread-man/src/Spam/Spam.php',
         'Happy\\ThreadMan\\Thread' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Thread.php',
         'Happy\\ThreadMan\\ThreadMan' => __DIR__ . '/../..' . '/happy/thread-man/ThreadMan.php',
         'Happy\\ThreadMan\\ThreadSubscription' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/ThreadSubscription.php',
@@ -3924,6 +3923,7 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'Tests\\Feature\\ParticipateForumTest' => __DIR__ . '/../..' . '/tests/Feature/ParticipateForumTest.php',
         'Tests\\Feature\\ProfileTest' => __DIR__ . '/../..' . '/tests/Feature/ProfileTest.php',
         'Tests\\Feature\\ReadThreadsTest' => __DIR__ . '/../..' . '/tests/Feature/ReadThreadsTest.php',
+        'Tests\\Feature\\SpamTest' => __DIR__ . '/../..' . '/tests/Feature/SpamTest.php',
         'Tests\\Feature\\SubscribeToThreadsTest' => __DIR__ . '/../..' . '/tests/Feature/SubscribeToThreadsTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Tests\\Unit\\ActivityTest' => __DIR__ . '/../..' . '/tests/Unit/ActivityTest.php',

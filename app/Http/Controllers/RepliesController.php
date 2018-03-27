@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Happy\ThreadMan\Thread;
 use Happy\ThreadMan\Reply;
-
+use Happy\ThreadMan\Spam;
 class RepliesController extends Controller
 {
 
@@ -36,12 +36,18 @@ class RepliesController extends Controller
     /**
      * Store a newly created resource in storage.
      * @param   $channelId
+     * @param Thread $thread
+     * @param Spam $spam
      * @return \Illuminate\Http\Response
      */
-    public function store($channelId, Thread $thread)
+    public function store($channelId, Thread $thread, Spam $spam)
     {
         request()->validate(['body' => 'required']);
         // dd($request->body);
+
+        // Check spam
+        $spam->detect(request('body'));
+
         $reply = $thread->addReply([
             'body'          => request('body'),
             'user_id'       => auth()->id(),
