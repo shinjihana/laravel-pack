@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 
 use Happy\ThreadMan\Channel;
 use Happy\ThreadMan\Filters\ThreadFilters;
-use Happy\ThreadMan\Inspections\Spam;
+use Happy\ThreadMan\Rules\SpamFree;
 
 class ThreadsController extends Controller
 {
@@ -51,7 +51,11 @@ class ThreadsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateThread();
+        request()->validate([
+            'title'         => 'required',
+            'body'          => ['required', new SpamFree],
+            'channel_id'    => 'required|exists:channels,id',
+        ]);
 
         $thread = Thread::create([
             'user_id'        => auth()->id(),
@@ -159,16 +163,5 @@ class ThreadsController extends Controller
         }
 
         return $threads->get();
-    }
-
-    protected function validateThread()
-    {
-        request()->validate([
-            'title'         => 'required',
-            'body'          => 'required',
-            'channel_id'    => 'required|exists:channels,id',
-        ]);
-
-        resolve(Spam::class)->detect(request('body'));
     }
 }

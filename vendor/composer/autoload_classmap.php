@@ -756,6 +756,7 @@ return array(
     'Happy\\ThreadMan\\Policies\\ThreadPolicy' => $baseDir . '/happy/thread-man/src/Policies/ThreadPolicy.php',
     'Happy\\ThreadMan\\RecordsActivity' => $baseDir . '/happy/thread-man/src/Models/RecordsActivity.php',
     'Happy\\ThreadMan\\Reply' => $baseDir . '/happy/thread-man/src/Models/Reply.php',
+    'Happy\\ThreadMan\\Rules\\SpamFree' => $baseDir . '/happy/thread-man/src/Rules/SpamFree.php',
     'Happy\\ThreadMan\\ServiceProvider' => $baseDir . '/happy/thread-man/ServiceProvider.php',
     'Happy\\ThreadMan\\Thread' => $baseDir . '/happy/thread-man/src/Models/Thread.php',
     'Happy\\ThreadMan\\ThreadMan' => $baseDir . '/happy/thread-man/ThreadMan.php',

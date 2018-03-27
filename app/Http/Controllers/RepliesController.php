@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use Happy\ThreadMan\Thread;
 use Happy\ThreadMan\Reply;
-use Happy\ThreadMan\Inspections\Spam;
+
+use Happy\ThreadMan\Rules\SpamFree;
+
 class RepliesController extends Controller
 {
 
@@ -44,7 +46,7 @@ class RepliesController extends Controller
     {
 
         try {
-            $this->validateReply();
+            request()->validate(['body' => ['required', new SpamFree]]);
 
             $reply = $thread->addReply([
                 'body'          => request('body'),
@@ -91,7 +93,8 @@ class RepliesController extends Controller
         try {
             $this->authorize('update', $reply);
 
-            $this->validateReply();
+            request()->validate(['body' => ['required', new SpamFree]]);
+
         } catch(\Exception $e) {
             return response('sorry fuk u', 422);
         }
@@ -117,12 +120,5 @@ class RepliesController extends Controller
             ]);
         }
         return back();
-    }
-
-    public function validateReply()
-    {
-        request()->validate(['body' => 'required']);
-
-        resolve(Spam::class)->detect(request('body'));
     }
 }
