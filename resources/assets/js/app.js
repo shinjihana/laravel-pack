@@ -19,8 +19,8 @@ window.Vue = require('vue');
 window.events = new Vue();  // vue.$on or Vue.$emit excute
 
 /**setting global function ( it can easily call everywher that you need) */
-window.flash = function(message){
-    window.events.$emit('flash', message);
+window.flash = function(message, level = 'success'){
+    window.events.$emit('flash', {message, level});
 };
 
 window.Vue.prototype.authorize = function (handler){
