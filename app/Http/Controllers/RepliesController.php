@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Happy\ThreadMan\Thread;
 use Happy\ThreadMan\Reply;
-use Happy\ThreadMan\Spam;
+use Happy\ThreadMan\Inspections\Spam;
 class RepliesController extends Controller
 {
 
@@ -43,7 +43,7 @@ class RepliesController extends Controller
     public function store($channelId, Thread $thread, Spam $spam)
     {
         request()->validate(['body' => 'required']);
-        // dd($request->body);
+        // dd(request()->all());
 
         // Check spam
         $spam->detect(request('body'));

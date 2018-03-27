@@ -112,13 +112,12 @@ class ParticipateForumTest extends TestCase
 
         $thread = create(self::ThreadTbl);
 
-        $reply = make(self::ThreadTbl, [
-            'body'  => 'Yahoo'
+        $reply = make(self::ReplyTbl, [
+            'body'  => 'yahoo customer'
         ]);
 
-        // $this->expectException(Exception::class);
-
-        $this->post($thread->path(). '/replies', $reply->toArray());
+        // $this->expectException(\Exception::class);
+        $this->post($thread->path(). '/replies', $reply->toArray())->assertStatus(500);
 
 
     }
