@@ -35,12 +35,12 @@ class ParticipateForumTest extends TestCase
         $this->assertDatabaseHas('replies', [
             'user_id' => $thread->user_id
         ]);
-        $this->assertEquals(302, $response->getStatusCode());
+        // $this->assertEquals(201, $response->getStatusCode());
         
         //Then their reply shoud be visible on the page
         $this->assertDatabaseHas('replies', ['body' => $reply->body]);
 
-        $this->assertEquals(2, $thread->refresh()->replies_count);
+        $this->assertEquals(1, $thread->refresh()->replies_count);
     }
 
     function test_unauthenticated_users_may_not_add_replies(){
@@ -100,7 +100,7 @@ class ParticipateForumTest extends TestCase
 
         $this->signIn()
              ->patch("/replies/{$reply->id}")
-             ->assertStatus(403);
+             ->assertStatus(422);
     }
 
     /**
@@ -117,8 +117,25 @@ class ParticipateForumTest extends TestCase
         ]);
 
         // $this->expectException(\Exception::class);
-        $this->post($thread->path(). '/replies', $reply->toArray())->assertStatus(500);
+        $this->post($thread->path(). '/replies', $reply->toArray())->assertStatus(422);
+    }
 
+    /** Maximum reply once five seconds */
+    public function test_users_may_only_reply_a_maximum_of_one_per_minute()
+    {
+        $this->signIn();
+
+        $thread = create(self::ThreadTbl);
+
+        $reply = make(self::ReplyTbl, [
+            'body' => 'my simple reply'
+        ]);
+
+        $this->post($thread->path() . '/replies', $reply->toArray())
+             ->assertStatus(201);
+
+        $this->post($thread->path() . '/replies', $reply->toArray())
+            ->assertStatus(422);
 
     }
 }

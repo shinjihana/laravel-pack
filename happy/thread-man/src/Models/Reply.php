@@ -4,6 +4,7 @@ namespace Happy\ThreadMan;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Carbon\Carbon;
 
 class Reply extends Model
 {
@@ -40,5 +41,10 @@ class Reply extends Model
     public function path()
     {
         return $this->thread->path(). "#reply-{$this->id}";
+    }
+
+    public function wasJustPublished()
+    {
+        return $this->created_at->gt(Carbon::now()->subMinute());
     }
 }
