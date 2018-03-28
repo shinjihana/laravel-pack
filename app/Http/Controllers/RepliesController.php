@@ -83,14 +83,10 @@ class RepliesController extends Controller
      */
     public function update(Reply $reply)
     {
-        try {
-            $this->authorize('update', $reply);
+        
+        $this->authorize('update', $reply);
 
-            request()->validate(['body' => ['required', new SpamFree]]);
-
-        } catch(\Exception $e) {
-            return response('sorry fuk u', 422);
-        }
+        request()->validate(['body' => ['required', new SpamFree]]);
 
         $reply->update(request(['body']));
     }

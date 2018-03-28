@@ -65147,7 +65147,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -65162,6 +65162,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__commons_Favorite_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__commons_Favorite_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+//
+//
+//
 //
 //
 //
@@ -65699,50 +65702,50 @@ var render = function() {
       _c("div", { staticClass: "card-body" }, [
         _vm.editting
           ? _c("div", [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "edit" } }, [_vm._v("Edit")]),
-                _vm._v(" "),
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.body,
-                      expression: "body"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { name: "edit", id: "", rows: "3" },
-                  domProps: { value: _vm.body },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+              _c("form", { on: { submit: _vm.update } }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "edit" } }, [_vm._v("Edit")]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.body,
+                        expression: "body"
                       }
-                      _vm.body = $event.target.value
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "edit", rows: "3", required: "" },
+                    domProps: { value: _vm.body },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.body = $event.target.value
+                      }
                     }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", on: { click: _vm.update } },
-                [_vm._v("Update")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-xs",
-                  on: {
-                    click: function($event) {
-                      _vm.editting = false
+                  })
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-primary" }, [
+                  _vm._v("Update")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-xs",
+                    on: {
+                      click: function($event) {
+                        _vm.editting = false
+                      }
                     }
-                  }
-                },
-                [_vm._v("Cancel")]
-              )
+                  },
+                  [_vm._v("Cancel")]
+                )
+              ])
             ])
           : _c("div", { domProps: { textContent: _vm._s(_vm.body) } })
       ]),

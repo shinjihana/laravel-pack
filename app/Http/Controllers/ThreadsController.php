@@ -12,6 +12,9 @@ use Happy\ThreadMan\Rules\SpamFree;
 
 class ThreadsController extends Controller
 {
+    /**
+     * Create a new ThreadsController instance
+     */
     public function __construct()
     {
         $this->middleware('auth')->except('index', 'show');

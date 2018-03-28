@@ -21,16 +21,19 @@
         </div>
         <div class="card-body">
             <div v-if="editting">
-                <div class="form-group">
-                    <label for="edit">Edit</label>
-                    <textarea
-                        name="edit" id=""
-                        rows="3" class="form-control"
-                        v-model="body"
-                    ></textarea>
-                </div>
-                <button class="btn btn-primary" @click="update">Update</button>
-                <button class="btn btn-xs" @click="editting = false">Cancel</button>
+                <form @submit="update">
+                    <div class="form-group">
+                        <label for="edit">Edit</label>
+                        <textarea
+                            name="edit"
+                            rows="3" class="form-control"
+                            v-model="body"
+                            required
+                        ></textarea>
+                    </div>
+                    <button class="btn btn-primary">Update</button>
+                    <button class="btn btn-xs" @click="editting = false">Cancel</button>
+                </form>
             </div>
             <div v-else="" v-text="body"></div>
         </div>
