@@ -28,6 +28,7 @@
 
 </template>
 <script>
+    import 'at.js';
     export default {
         data(){
             return {
@@ -39,6 +40,20 @@
             signedIn(){
                 return window.App.signedIn;
             }
+        },
+        mounted(){
+            $('#body').atwho({
+                at : "@",
+                delay : 790,
+                callbacks : {
+                    remoteFilter : function(query, callback){
+                        console.log('called');
+                        // $.getJSON("/users.php", {q : query}, function(username) {
+                        //     callback(username);
+                        // });
+                    }
+                }
+            });
         },
         methods : {
             addReply (){
