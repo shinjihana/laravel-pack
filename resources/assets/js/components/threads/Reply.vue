@@ -35,7 +35,7 @@
                     <button class="btn btn-xs" @click="editting = false">Cancel</button>
                 </form>
             </div>
-            <div v-else="" v-text="body"></div>
+            <div v-else="" v-html="body"></div>
         </div>
         <div class="card-footer" v-if="canUpdate">
             <div class="d-flex">
