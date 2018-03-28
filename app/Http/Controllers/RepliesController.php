@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
 use Happy\ThreadMan\Thread;
 use Happy\ThreadMan\Reply;
 
 use Happy\ThreadMan\Rules\SpamFree;
 use Happy\ThreadMan\Http\Requests\CreatePostRequest;
-
+use Happy\ThreadMan\Notifications\YouWereMentioned;
 class RepliesController extends Controller
 {
 
@@ -45,10 +46,25 @@ class RepliesController extends Controller
      */
     public function store($channelId, Thread $thread, CreatePostRequest $form)
     {
-        return $thread->addReply([
+        $reply =  $thread->addReply([
             'body'          => request('body'),
             'user_id'       => auth()->id(),
-        ])->load('owner');
+        ]);
+
+        //Inspect the body of the reply for username mentions
+        preg_match_all("/\@([^\s\.]+)/", $reply->body, $matches);
+
+        $names = $matches[1];
+
+        //And then for each mentioned user, notify then.
+        foreach($names as $name) {
+            $user = User::whereName($name)->first();
+
+            if ($user) {
+                $user->notify(new YouWereMentioned($reply));
+            }
+        }
+        return $reply->load('owner');
     }
 
     /**
