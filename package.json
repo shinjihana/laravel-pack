@@ -20,6 +20,7 @@
     "vue": "^2.5.7"
   },
   "dependencies": {
+    "at.js": "^1.5.3",
     "glyphicons": "^0.2.0",
     "moment": "^2.21.0",
     "vue-devtools": "^3.1.9"
