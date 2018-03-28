@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 
 use Happy\ThreadMan\Notifications\ThreadWasUpdated;
-use Happy\ThreadMan\Events\ThreadHasNewReply;
+use Happy\ThreadMan\Events\ThreadReceiveNewReply;
 
 class Thread extends Model
 {
@@ -66,21 +66,14 @@ class Thread extends Model
         /**
          * way 1 :Using Event
          */
-
         /**way 2 - call currently */
-        $this->notifySubscribers($reply);
+        // $this->notifySubscribers($reply);
         
+        event(new ThreadReceiveNewReply($reply));
+
         return $reply;
     }
 
-    /**notify to subscriber */
-    public function notifySubscribers($reply)
-    {
-        $this->subscriptions
-             ->where('user_id', '!=', $reply->user_id)
-             ->each
-             ->notify($reply);
-    }
 
     public function channel()
     {

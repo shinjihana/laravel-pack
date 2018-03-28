@@ -52,16 +52,16 @@ class ReadThreadsTest extends TestCase
         //         ->assertSee($reply->body);
     }
 
-    public function test_a_user_can_filter_threads_according_to_a_channel()
-    {
-        $channel = create(self::ChannelTbl);
+    // public function test_a_user_can_filter_threads_according_to_a_channel()
+    // {
+    //     $channel = create(self::ChannelTbl);
 
-        $threadInChannel = create(self::ThreadTbl, ['channel_id' => $channel->id]);
-        $threadNotInChannel = create(self::ThreadTbl);
+    //     $threadInChannel = create(self::ThreadTbl, ['channel_id' => $channel->id]);
+    //     $threadNotInChannel = create(self::ThreadTbl);
 
-        $this->get('/threads/'. $channel->slug)
-                ->assertSee($threadInChannel->title);
-    }
+    //     $this->get('/threads/'. $channel->slug)
+    //             ->assertSee($threadInChannel->title);
+    // }
 
     public function test_a_user_can_filter_thread_by_any_username()
     {
