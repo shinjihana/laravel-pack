@@ -108,6 +108,8 @@ class ParticipateForumTest extends TestCase
      */
     public function test_replies_that_contain_spam_may_not_be_created()
     {
+        $this->withExceptionHandling();
+
         $this->signIn();
 
         $thread = create(self::ThreadTbl);
@@ -117,25 +119,25 @@ class ParticipateForumTest extends TestCase
         ]);
 
         // $this->expectException(\Exception::class);
-        $this->post($thread->path(). '/replies', $reply->toArray())->assertStatus(422);
+        $this->post($thread->path(). '/replies', $reply->toArray())->assertStatus(302);
     }
 
     /** Maximum reply once five seconds */
     public function test_users_may_only_reply_a_maximum_of_one_per_minute()
     {
+        $this->withExceptionHandling();
+
         $this->signIn();
 
         $thread = create(self::ThreadTbl);
 
-        $reply = make(self::ReplyTbl, [
-            'body' => 'my simple reply'
-        ]);
+        $reply = make(self::ReplyTbl);
 
         $this->post($thread->path() . '/replies', $reply->toArray())
              ->assertStatus(201);
 
         $this->post($thread->path() . '/replies', $reply->toArray())
-            ->assertStatus(422);
+            ->assertStatus(429);
 
     }
 }

@@ -8,6 +8,7 @@ use Happy\ThreadMan\Thread;
 use Happy\ThreadMan\Reply;
 
 use Happy\ThreadMan\Rules\SpamFree;
+use Happy\ThreadMan\Http\Requests\CreatePostRequest;
 
 class RepliesController extends Controller
 {
@@ -42,29 +43,12 @@ class RepliesController extends Controller
      * @param Spam $spam
      * @return \Illuminate\Http\Response
      */
-    public function store($channelId, Thread $thread)
+    public function store($channelId, Thread $thread, CreatePostRequest $form)
     {
-        if (\Gate::denies('create', new Reply)) {
-            return response(
-                'You are posting frequently, please take a break. :)', 422
-            );
-        }
-        
-        try {
-
-            request()->validate(['body' => ['required', new SpamFree]]);
-
-            $lastReply = Reply::where('user_id', auth()->id())->latest()->first();
-
-            $reply = $thread->addReply([
-                'body'          => request('body'),
-                'user_id'       => auth()->id(),
-            ]);
-        } catch (\Exception $e) {
-            return response('sorry fuk u', 422);
-        }
-
-        return $reply->load('owner');
+        return $thread->addReply([
+            'body'          => request('body'),
+            'user_id'       => auth()->id(),
+        ])->load('owner');
     }
 
     /**
