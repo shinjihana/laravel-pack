@@ -6,7 +6,7 @@
                         <label for="body">コメント : </label>
                         <textarea 
                             required
-                            name="body" id="" 
+                            name="body" id="body" 
                             placeholder="コメントを入力してください。"
                             class="form-control" cols="30" rows="5"
                             v-model="body"
@@ -28,6 +28,7 @@
 
 </template>
 <script>
+    import 'jquery.caret';
     import 'at.js';
     export default {
         data(){
@@ -41,16 +42,15 @@
                 return window.App.signedIn;
             }
         },
-        mounted(){
+        mounted() {
             $('#body').atwho({
                 at : "@",
                 delay : 790,
                 callbacks : {
                     remoteFilter : function(query, callback){
-                        console.log('called');
-                        // $.getJSON("/users.php", {q : query}, function(username) {
-                        //     callback(username);
-                        // });
+                        $.getJSON("/api/users", {name : query}, function(username) {
+                            callback(username);
+                        });
                     }
                 }
             });
