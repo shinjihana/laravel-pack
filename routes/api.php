@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 /** ===========For User=========== */
 Route::get('/users', 'Api\UsersController@index');
-Route::post('/users/{user}/avatar', 'Api\UserAvatarController@store');
+// Route::post('/users/{user}/avatar', 'Api\UserAvatarController@store');
 /** ===========For User=========== */

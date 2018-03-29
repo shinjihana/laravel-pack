@@ -12,7 +12,7 @@ class UserAvatarController extends Controller
        $this->middleware('auth'); 
     }
 
-    public function store()
+    public function store($user)
     {
         request()->validate([
             'avatar'    => ['required', 'image']

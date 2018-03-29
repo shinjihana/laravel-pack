@@ -58,3 +58,6 @@ Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index'
 /** Thread-Channel */
 // Route::get('/threads/{channel}', 'ChannelsController@index');
 Route::get('/threads/{channel}', 'ThreadsController@index');
+
+/**Api user */
+Route::post('/api/users/{user}/avatar', 'Api\UserAvatarController@store');
