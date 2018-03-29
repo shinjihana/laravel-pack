@@ -344,6 +344,7 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Api\\UserAvatarController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/UserAvatarController.php',
         'App\\Http\\Controllers\\Api\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/UsersController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -3927,6 +3928,7 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
+        'Tests\\Feature\\AddAvatarTest' => __DIR__ . '/../..' . '/tests/Feature/AddAvatarTest.php',
         'Tests\\Feature\\CreateThreadsTest' => __DIR__ . '/../..' . '/tests/Feature/CreateThreadsTest.php',
         'Tests\\Feature\\FavoritesTest' => __DIR__ . '/../..' . '/tests/Feature/FavoritesTest.php',
         'Tests\\Feature\\MentionUsersTest' => __DIR__ . '/../..' . '/tests/Feature/MentionUsersTest.php',

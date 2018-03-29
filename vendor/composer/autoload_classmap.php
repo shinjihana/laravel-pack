@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\Api\\UserAvatarController' => $baseDir . '/app/Http/Controllers/Api/UserAvatarController.php',
     'App\\Http\\Controllers\\Api\\UsersController' => $baseDir . '/app/Http/Controllers/Api/UsersController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -3591,6 +3592,7 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
     'Tests\\CreatesApplication' => $baseDir . '/tests/CreatesApplication.php',
+    'Tests\\Feature\\AddAvatarTest' => $baseDir . '/tests/Feature/AddAvatarTest.php',
     'Tests\\Feature\\CreateThreadsTest' => $baseDir . '/tests/Feature/CreateThreadsTest.php',
     'Tests\\Feature\\FavoritesTest' => $baseDir . '/tests/Feature/FavoritesTest.php',
     'Tests\\Feature\\MentionUsersTest' => $baseDir . '/tests/Feature/MentionUsersTest.php',
