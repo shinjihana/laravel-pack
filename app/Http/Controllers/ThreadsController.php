@@ -6,6 +6,8 @@ use Happy\ThreadMan\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
+use Illuminate\Support\Facades\Redis;
+
 use Happy\ThreadMan\Channel;
 use Happy\ThreadMan\Filters\ThreadFilters;
 use Happy\ThreadMan\Rules\SpamFree;
@@ -33,7 +35,9 @@ class ThreadsController extends Controller
             return $threads;
         }
 
-        return view('threads.index', compact('threads'));
+        $trending = array_map('json_decode', Redis::zrevrange('trending_threads', 0, 4));
+
+        return view('threads.index', compact('threads', 'trending'));
     }
 
     /**
@@ -95,6 +99,11 @@ class ThreadsController extends Controller
             auth()->user()->read($thread);
         }
         /** =========Way 2========= */
+
+        Redis::zincrby('trending_threads', 1, json_encode([
+            'title' => $thread->title,
+            'path'  => $thread->path(),
+        ]));
 
         // return $thread;
         return view('threads.show', compact('thread'));
