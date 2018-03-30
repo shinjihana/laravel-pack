@@ -34,6 +34,8 @@ window.Vue.prototype.authorize = function (handler){
 Vue.component('flash', require('./components/commons/Flash.vue'));
 Vue.component('paginator', require('./components/commons/Paginator.vue'));
 Vue.component('user-notifications', require('./components/commons/UserNotifications.vue'));
+
+Vue.component('avatar-form', require('./components/commons/AvatarForm.vue'));
 // Vue.component('favorite', require('./components/common/Favorite.vue'));
 
 /**Thread Components */

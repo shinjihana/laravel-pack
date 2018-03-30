@@ -6,20 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header bg-default border-success">
-                    <h4>
-                        Profile's {{ $profileUser->name }}
-                    </h4>
-                    @can ('update', $profileUser)
-                        <form 
-                            method="POST"
-                            action="/api/users/{{ $profileUser->id }}/avatar"
-                            enctype="multipart/form-data">
-                            {{ csrf_field() }}
-                            <input type="file" name="avatar">
-                            <button type="submit" class="btn btn-primary">Add Avatar</button>
-                        </form>
-                    @endcan
-                    <img src="{{ asset('storage/'.$profileUser->avatar_path) }}" alt="{{$profileUser->name}}" width="200" height="200">
+                    <avatar-form :user="{{ $profileUser }}"></avatar-form>
                 </div>
                 <div class="card-body">
                    @forelse($activities as $date => $activity)
