@@ -6,11 +6,13 @@ use Happy\ThreadMan\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
-use Illuminate\Support\Facades\Redis;
+// use Illuminate\Support\Facades\Redis;
 
 use Happy\ThreadMan\Channel;
 use Happy\ThreadMan\Filters\ThreadFilters;
 use Happy\ThreadMan\Rules\SpamFree;
+
+use Happy\ThreadMan\Commons\Trending;
 
 class ThreadsController extends Controller
 {
@@ -27,7 +29,7 @@ class ThreadsController extends Controller
      * @Param Channel $channel
      * @return \Illuminate\Http\Response
      */
-    public function index(Channel $channel, ThreadFilters $filters)
+    public function index(Channel $channel, ThreadFilters $filters, Trending $trending)
     {
         $threads = $this->getThreads($channel, $filters);
 
@@ -35,9 +37,10 @@ class ThreadsController extends Controller
             return $threads;
         }
 
-        $trending = array_map('json_decode', Redis::zrevrange('trending_threads', 0, 4));
-
-        return view('threads.index', compact('threads', 'trending'));
+        return view('threads.index', [
+            'threads'   => $threads,
+            'trending'  => $trending->get(),
+        ]);
     }
 
     /**
@@ -82,7 +85,7 @@ class ThreadsController extends Controller
      * @param  \Happy\ThreadMan\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show($channelId, Thread $thread)
+    public function show($channelId, Thread $thread, Trending $trending)
     {
         // Record that the user visited this page
 
@@ -98,12 +101,9 @@ class ThreadsController extends Controller
         if (auth()->check()) {
             auth()->user()->read($thread);
         }
-        /** =========Way 2========= */
+        /** =========Way 2 -ending ========= */
 
-        Redis::zincrby('trending_threads', 1, json_encode([
-            'title' => $thread->title,
-            'path'  => $thread->path(),
-        ]));
+        $trending->push($thread);
 
         // return $thread;
         return view('threads.show', compact('thread'));
