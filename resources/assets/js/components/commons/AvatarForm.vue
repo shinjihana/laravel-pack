@@ -6,15 +6,13 @@
             </div>
             <div>
                 <h4 v-text="user.name"></h4>
+                <form
+                    v-if="canUpdate" 
+                    method="POST"
+                    enctype="multipart/form-data">
+                    <image-upload name="avatar" @loaded="onLoad"></image-upload>
+                </form>
             </div>
-        </div>
-        <div>
-            <form
-                v-if="canUpdate" 
-                method="POST"
-                enctype="multipart/form-data">
-                <image-upload name="avatar" @loaded="onLoad"></image-upload>
-            </form>
         </div>
     </div>
 </template>

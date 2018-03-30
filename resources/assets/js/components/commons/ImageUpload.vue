@@ -1,5 +1,8 @@
 <template>
-    <input type="file" accept="image/*" @change="onChange">
+    <div class="custom-file">
+        <input type="file" accept="image/*" @change="onChange" class="custom-file-input" id="uploadFile">
+        <label class="custom-file-label" for="uploadFile">Choose file</label>
+    </div>
 </template>
 <script>
     export default {
