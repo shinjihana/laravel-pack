@@ -1088,6 +1088,7 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'Happy\\ThreadMan\\Favorite' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Favorite.php',
         'Happy\\ThreadMan\\Filters\\Filters' => __DIR__ . '/../..' . '/happy/thread-man/src/Filters/Filters.php',
         'Happy\\ThreadMan\\Filters\\ThreadFilters' => __DIR__ . '/../..' . '/happy/thread-man/src/Filters/ThreadFilters.php',
+        'Happy\\ThreadMan\\Http\\Middleware\\RedirectIfEmailNotConfirmed' => __DIR__ . '/../..' . '/happy/thread-man/src/Http/Middleware/RedirectIfEmailNotConfirmed.php',
         'Happy\\ThreadMan\\Http\\Requests\\CreatePostRequest' => __DIR__ . '/../..' . '/happy/thread-man/src/Http/Requests/CreatePostForm.php',
         'Happy\\ThreadMan\\Inspections\\InvalidKeywords' => __DIR__ . '/../..' . '/happy/thread-man/src/Inspections/InvalidKeywords.php',
         'Happy\\ThreadMan\\Inspections\\KeyHeldDown' => __DIR__ . '/../..' . '/happy/thread-man/src/Inspections/KeyHeldDown.php',
