@@ -12,6 +12,7 @@ $factory->define(Happy\ThreadMan\Thread::class, function (Faker $faker) {
         },
         'title'     => $faker->title,
         'body'      => $faker->paragraph,
+        'visits'    => 0
     ];
 });
 
