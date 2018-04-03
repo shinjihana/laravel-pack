@@ -42,8 +42,12 @@ class RegistrationTest extends TestCase
             'password_confirmation' => 'foobar'
         ]);
         $user = User::whereName('John')->first();
-        $this->assertFalse($user->confirmed);
-        $this->assertNotNull($user->confirmation_token);
+
+        tap($user->fresh(), function($user){
+            $this->assertFalse($user->confirmed);
+            $this->assertNotNull($user->confirmation_token);
+        });
+
         $this->get(route('register.confirm', ['token' => $user->confirmation_token]))
             ->assertRedirect(route('threads'));
         $this->assertTrue($user->fresh()->confirmed);
