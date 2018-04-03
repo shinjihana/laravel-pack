@@ -27,8 +27,10 @@ class SendEmailConfirmationRequest
      * @param  Registered  $event
      * @return void
      */
-    public function handle(Registered $event)
+    public function handle(Registered $event, $user)
     {
-        Mail::to($event->user)->send(new PleaseConfirmYourEmail($event->user));
+        Mail::to($user)->send(new PleaseConfirmYourEmail($user));
+
+        return redirect($this->redirectPath());
     }
 }

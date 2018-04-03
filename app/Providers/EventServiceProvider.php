@@ -19,10 +19,6 @@ class EventServiceProvider extends ServiceProvider
             'Happy\ThreadMan\Listeners\NotifyMentionedUsers',
             'Happy\ThreadMan\Listeners\NotifySubscribers',
         ],
-
-        Registered::class => [
-            'Happy\ThreadMan\Listeners\SendEmailConfirmationRequest'
-        ]
     ];
 
     /**

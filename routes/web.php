@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /** Processing Threads */
-Route::get('/threads', 'ThreadsController@index');
+Route::get('/threads', 'ThreadsController@index')->name('threads');;
 Route::get('/threads/create', 'ThreadsController@create');
 Route::get('/threads/{channel}/{thread}', 'ThreadsController@show');
 
@@ -60,7 +60,7 @@ Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index'
 Route::get('/threads/{channel}', 'ThreadsController@index');
 
 /** For User */
-Route::get('/register/confirm', 'Api\RegisterConfirmationController@index');
+Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index')->name('register.confirm');
 
 /**Api user */
 Route::post('/api/users/{user}/avatar', 'Api\UserAvatarController@store');
