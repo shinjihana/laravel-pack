@@ -40,12 +40,12 @@ class ThreadTest extends TestCase
         $this->assertInstanceOf(self::ChannelTbl, $thread->channel);
     }
 
-    function test_a_thread_can_make_a_string_path()
+    function test_a_thread_has_a_path()
     {
         $thread = create(self::ThreadTbl);
         
         // $this->assertEquals('/threads/'. $thread->channel->slug. '/'. $thread->id, $thread->path());
-        $this->assertEquals("/threads/{$thread->channel->slug}/{$thread->id}", $thread->path());
+        $this->assertEquals("/threads/{$thread->channel->slug}/{$thread->slug}", $thread->path());
     }
 
     function test_a_user_can_filter_thread_by_popularity()

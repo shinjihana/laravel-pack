@@ -6,6 +6,8 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+use Happy\ThreadMan\Thread;
+
 class CreateThreadsTest extends TestCase
 {
     use DatabaseMigrations;
@@ -36,7 +38,7 @@ class CreateThreadsTest extends TestCase
         $thread = make(self::ThreadTbl);
 
         $this->post(route('threads'), $thread->toArray())
-                ->assertRedirect(route('thread'))
+                ->assertRedirect(route('threads'))
                 ->assertSessionHas('flash', 'You must first confirm your email address.');
     }
 
@@ -68,6 +70,23 @@ class CreateThreadsTest extends TestCase
     {
         $this->publishThread(['channel_id' => null])
                 ->assertSessionHasErrors('channel_id');
+    }
+
+    public function test_a_thread_require_a_unique_slug()
+    {
+        $this->signIn();
+
+        $thread = create(self::ThreadTbl, ['title' => 'Foo Title', 'slug' => 'foo-title']);
+
+        $this->assertEquals($thread->fresh()->slug, 'foo-title');
+
+        $this->post(route('threads'), $thread->toArray());
+
+        $this->assertTrue(Thread::whereSlug('foo-title-2')->exists());
+
+        $this->post(route('threads'), $thread->toArray());
+
+        $this->assertTrue(Thread::whereSlug('foo-title-3')->exists());
     }
 
     public function test_a_thread_can_be_deleted()
