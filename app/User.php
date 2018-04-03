@@ -35,7 +35,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'email', 'confirm', 'confirm_token'
+        'password', 'remember_token', 'email', 'confirmed', 'confirmation_token'
     ];
 
     public function getRouteKeyName()
