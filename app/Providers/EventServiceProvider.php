@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
+use Illuminate\Auth\Events\Registered;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -17,6 +19,10 @@ class EventServiceProvider extends ServiceProvider
             'Happy\ThreadMan\Listeners\NotifyMentionedUsers',
             'Happy\ThreadMan\Listeners\NotifySubscribers',
         ],
+
+        Registered::class => [
+            'Happy\ThreadMan\Listeners\SendEmailConfirmationRequest'
+        ]
     ];
 
     /**

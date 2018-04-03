@@ -31,4 +31,11 @@ trait UserThreadMan{
     {
         return asset($avatar ? 'storage/'. $avatar : 'img/default.jpg');
     }
+
+    public function confirm()
+    {
+        $this->confirmed = true;
+
+        $this->save();
+    }
 }

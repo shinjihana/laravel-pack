@@ -59,5 +59,8 @@ Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index'
 // Route::get('/threads/{channel}', 'ChannelsController@index');
 Route::get('/threads/{channel}', 'ThreadsController@index');
 
+/** For User */
+Route::get('/register/confirm', 'Api\RegisterConfirmationController@index');
+
 /**Api user */
 Route::post('/api/users/{user}/avatar', 'Api\UserAvatarController@store');

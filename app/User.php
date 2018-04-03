@@ -24,6 +24,12 @@ class User extends Authenticatable
     ];
 
     /**
+     * Cast
+     */
+    protected $casts = [
+        'confirmed' => 'boolean'
+    ];
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
