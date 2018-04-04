@@ -29,7 +29,7 @@ Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store');
 
 Route::delete('/threads/{channel}/{thread}', 'ThreadsController@destroy');
 
-/** Processing Reply */
+/** ============== Processing Reply ============== */
     /**------- Favorite processing ----------*/
 Route::post('/replies/{reply}/favorites', 'FavoritesController@store');
 Route::delete('/replies/{reply}/favorites', 'FavoritesController@destroy');
@@ -37,8 +37,7 @@ Route::delete('/replies/{reply}/favorites', 'FavoritesController@destroy');
 
 Route::get('/threads/{channel}/{thread}/replies', 'RepliesController@index');
 Route::delete('/replies/{reply}', 'RepliesController@destroy');
-Route::patch('/replies/{reply}', 'RepliesController@update');
-
+Route::patch('/replies/{reply}', 'RepliesController@update')->name('replies.destroy');
     /**
      * best reply processing
     */
