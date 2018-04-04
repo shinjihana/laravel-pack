@@ -30,15 +30,20 @@ Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store');
 Route::delete('/threads/{channel}/{thread}', 'ThreadsController@destroy');
 
 /** Processing Reply */
-/**------- Favorite processing ----------*/
+    /**------- Favorite processing ----------*/
 Route::post('/replies/{reply}/favorites', 'FavoritesController@store');
 Route::delete('/replies/{reply}/favorites', 'FavoritesController@destroy');
-/**------- Favorite processing ----------*/
+    /**------- Favorite processing ----------*/
 
 Route::get('/threads/{channel}/{thread}/replies', 'RepliesController@index');
 Route::delete('/replies/{reply}', 'RepliesController@destroy');
 Route::patch('/replies/{reply}', 'RepliesController@update');
 
+    /**
+     * best reply processing
+    */
+Route::post('/replies/{reply}/best', 'BestRepliesController@store')->name('best-replies.store');
+    /**------- end best reply processing ----------*/
 /**============== Ending Processing Reply ==============*/
 
 /**========== Processing Subscription ==========*/
