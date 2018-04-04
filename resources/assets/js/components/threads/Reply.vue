@@ -1,10 +1,10 @@
 <template>
     <div :id="'reply-' + id" class="card mt-2">
-        <div class="card-header bg-success">
+        <div class="card-header" :class="isBest ? 'bg-success' : 'bg-default'">
             <div class="d-flex">
                 <div>
                     <a :href="'/profiles/' + data.owner.name" 
-                        class="text-white"
+                        class="text-black"
                         v-text="data.owner.name"
                         >
                     </a>
@@ -37,10 +37,18 @@
             </div>
             <div v-else="" v-html="body"></div>
         </div>
-        <div class="card-footer" v-if="canUpdate">
+        <div class="card-footer">
             <div class="d-flex">
-                <button class="btn btn-xs mr-2" @click="editting = true">Edit</button>
-                <button class="btn btn-xs btn-danger mr-2" @click="destroy">Delete</button>
+                <div v-if="authorize('updateReply', reply)">
+                    <button class="btn btn-xs mr-2" @click="editting = true">Edit</button>
+                    <button class="btn btn-xs btn-danger mr-2" @click="destroy">Delete</button>
+                </div>
+                <div class="ml-auto">
+                    <button class="btn btn-xs btn-primary mr-2"
+                        @click="markBestReply"
+                        v-show="! isBest"
+                    >Best Reply</button>
+                </div>
             </div>
         </div>
     </div>
@@ -56,17 +64,16 @@
                 editting    : false,
                 body        : this.data.body,
                 id : this.data.id,
+                reply : this.data,
+                thread : window.thread,
             }
         },
         computed : {
             ago() {
                 return moment(this.data.created_at).fromNow();
             },
-            signedIn() {
-                return window.App.signedIn;
-            },
-            canUpdate() {
-                return this.authorize(user => this.data.user_id == user.id);
+            isBest() {
+                return this.thread.best_reply_id == this.id;
             }
         },
         methods : {
@@ -91,6 +98,11 @@
                 //     flash('Your reply was deleted');
                 // });
             },
+            markBestReply() {
+                axios.post('/replies/'+ this.data.id + '/best');
+
+                this.thread.best_reply_id = this.id;
+            }
         }
     }
 </script>

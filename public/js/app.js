@@ -31233,12 +31233,24 @@ window.flash = function (message) {
     window.events.$emit('flash', { message: message, level: level });
 };
 
-window.Vue.prototype.authorize = function (handler) {
-    //Additional admin privileges.
-    var user = window.App.user;
+var authorizations = __webpack_require__(214);
 
-    return user ? handler(user) : false;
+window.Vue.prototype.authorize = function () {
+
+    if (!window.App.signedIn) return false;
+
+    for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+        params[_key] = arguments[_key];
+    }
+
+    if (typeof params[0] === 'string') {
+        return authorizations[params[0]](params[1]);
+    }
+
+    return params[0](window.App.user);
 };
+
+Vue.prototype.signedIn = window.App.signedIn;
 
 /**Common Components */
 Vue.component('flash', __webpack_require__(167));
@@ -65597,7 +65609,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -65659,6 +65671,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -65669,7 +65689,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             editting: false,
             body: this.data.body,
-            id: this.data.id
+            id: this.data.id,
+            reply: this.data,
+            thread: window.thread
         };
     },
 
@@ -65677,15 +65699,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         ago: function ago() {
             return __WEBPACK_IMPORTED_MODULE_1_moment___default()(this.data.created_at).fromNow();
         },
-        signedIn: function signedIn() {
-            return window.App.signedIn;
-        },
-        canUpdate: function canUpdate() {
-            var _this = this;
-
-            return this.authorize(function (user) {
-                return _this.data.user_id == user.id;
-            });
+        isBest: function isBest() {
+            return this.thread.best_reply_id == this.id;
         }
     },
     methods: {
@@ -65708,6 +65723,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // $(this.$el).fadeOut(300, ()=>{
             //     flash('Your reply was deleted');
             // });
+        },
+        markBestReply: function markBestReply() {
+            axios.post('/replies/' + this.data.id + '/best');
+
+            this.thread.best_reply_id = this.id;
         }
     }
 });
@@ -66128,28 +66148,39 @@ var render = function() {
     "div",
     { staticClass: "card mt-2", attrs: { id: "reply-" + _vm.id } },
     [
-      _c("div", { staticClass: "card-header bg-success" }, [
-        _c("div", { staticClass: "d-flex" }, [
-          _c("div", [
-            _c("a", {
-              staticClass: "text-white",
-              attrs: { href: "/profiles/" + _vm.data.owner.name },
-              domProps: { textContent: _vm._s(_vm.data.owner.name) }
-            }),
-            _vm._v("\n                said "),
-            _c("span", { domProps: { textContent: _vm._s(_vm.ago) } }),
-            _vm._v("...\n            ")
-          ]),
-          _vm._v(" "),
-          _vm.signedIn
-            ? _c("div", { staticClass: "ml-auto" }, [
-                _c("div", { staticClass: "d-flex" }, [
-                  _c("div", [_c("favorite", { attrs: { reply: _vm.data } })], 1)
+      _c(
+        "div",
+        {
+          staticClass: "card-header",
+          class: _vm.isBest ? "bg-success" : "bg-default"
+        },
+        [
+          _c("div", { staticClass: "d-flex" }, [
+            _c("div", [
+              _c("a", {
+                staticClass: "text-black",
+                attrs: { href: "/profiles/" + _vm.data.owner.name },
+                domProps: { textContent: _vm._s(_vm.data.owner.name) }
+              }),
+              _vm._v("\n                said "),
+              _c("span", { domProps: { textContent: _vm._s(_vm.ago) } }),
+              _vm._v("...\n            ")
+            ]),
+            _vm._v(" "),
+            _vm.signedIn
+              ? _c("div", { staticClass: "ml-auto" }, [
+                  _c("div", { staticClass: "d-flex" }, [
+                    _c(
+                      "div",
+                      [_c("favorite", { attrs: { reply: _vm.data } })],
+                      1
+                    )
+                  ])
                 ])
-              ])
-            : _vm._e()
-        ])
-      ]),
+              : _vm._e()
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _vm.editting
@@ -66202,33 +66233,54 @@ var render = function() {
           : _c("div", { domProps: { innerHTML: _vm._s(_vm.body) } })
       ]),
       _vm._v(" "),
-      _vm.canUpdate
-        ? _c("div", { staticClass: "card-footer" }, [
-            _c("div", { staticClass: "d-flex" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-xs mr-2",
-                  on: {
-                    click: function($event) {
-                      _vm.editting = true
+      _c("div", { staticClass: "card-footer" }, [
+        _c("div", { staticClass: "d-flex" }, [
+          _vm.authorize("updateReply", _vm.reply)
+            ? _c("div", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-xs mr-2",
+                    on: {
+                      click: function($event) {
+                        _vm.editting = true
+                      }
                     }
+                  },
+                  [_vm._v("Edit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-xs btn-danger mr-2",
+                    on: { click: _vm.destroy }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "ml-auto" }, [
+            _c(
+              "button",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.isBest,
+                    expression: "! isBest"
                   }
-                },
-                [_vm._v("Edit")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-xs btn-danger mr-2",
-                  on: { click: _vm.destroy }
-                },
-                [_vm._v("Delete")]
-              )
-            ])
+                ],
+                staticClass: "btn btn-xs btn-primary mr-2",
+                on: { click: _vm.markBestReply }
+              },
+              [_vm._v("Best Reply")]
+            )
           ])
-        : _vm._e()
+        ])
+      ])
     ]
   )
 }
@@ -66337,12 +66389,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             body: '',
             endpoint: location.pathname + '/replies'
         };
-    },
-
-    computed: {
-        signedIn: function signedIn() {
-            return window.App.signedIn;
-        }
     },
     mounted: function mounted() {
         $('#body').atwho({
@@ -68299,6 +68345,21 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */
+/***/ (function(module, exports) {
+
+var user = window.App.user;
+
+module.exports = {
+    updateReply: function updateReply(reply) {
+        return reply.user_id === user.id;
+    }
+};
 
 /***/ })
 /******/ ]);

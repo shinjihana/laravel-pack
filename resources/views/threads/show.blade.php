@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('header')
-<link href="/css/vendor/jquery.atwho.css" rel="stylesheet">
+    <link href="/css/vendor/jquery.atwho.css" rel="stylesheet">
+    <script>
+        window.thread = <?= json_encode($thread); ?>;
+    </script>
 @endsection
 
 @section('content')

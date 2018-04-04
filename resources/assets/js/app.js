@@ -23,12 +23,20 @@ window.flash = function(message, level = 'success'){
     window.events.$emit('flash', {message, level});
 };
 
-window.Vue.prototype.authorize = function (handler){
-    //Additional admin privileges.
-    let user = window.App.user;
+let authorizations = require('./authorizations');
+
+window.Vue.prototype.authorize = function (...params){
+
+    if (! window.App.signedIn) return false;
     
-    return user ? handler(user) : false;
+    if (typeof params[0] === 'string') {
+        return authorizations[params[0]](params[1]);
+    }
+
+    return params[0](window.App.user);
 }
+
+Vue.prototype.signedIn = window.App.signedIn;
 
 /**Common Components */
 Vue.component('flash', require('./components/commons/Flash.vue'));
