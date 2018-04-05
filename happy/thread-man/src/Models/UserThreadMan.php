@@ -40,4 +40,9 @@ trait UserThreadMan{
 
         $this->save();
     }
+
+    public function isAdmin()  : bool
+    {
+        return in_array($this->name, ['hoachan', 'Hoachan']);
+    }
 }

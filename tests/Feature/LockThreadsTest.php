@@ -20,9 +20,21 @@ class LockThreadsTest extends TestCase
 
         $thread->lock();
 
-        $this->post($thread->path() . '/replies', [
-            'body'      => 'Foobar',
-            'user_id'   => create('App\User')->id,
-        ])->assertStatus(422);
+        $this->post(route('locked-threads.store', $thread)); 
+
+        $this->assertTrue(! ! $thread->fresh()->locked, 'Failed asserting that the thread was locked.');
+    }
+
+    public function test_non_administrator_may_not_lock_threads()
+    {
+        $this->withExceptionHandling();
+
+        $this->signIn();
+
+        $thread = create(self::ThreadTbl, ['user_id' => auth()->id()]);
+
+        $this->post(route('locked-threads.store', $thread))->assertStatus(403);
+
+        $this->assertFalse(!! $thread->fresh()->locked);
     }
 }
