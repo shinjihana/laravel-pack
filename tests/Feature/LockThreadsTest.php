@@ -14,15 +14,13 @@ class LockThreadsTest extends TestCase
 
     public function test_an_administrator_can_lock_any_thread()
     {
-        $this->signIn();
+        $this->signIn(factory('App\User')->states('administrator')->create());
 
-        $thread = create(self::ThreadTbl);
-
-        $thread->lock();
+        $thread = create(self::ThreadTbl, ['user_id' => auth()->id()]);
 
         $this->post(route('locked-threads.store', $thread)); 
 
-        $this->assertTrue(! ! $thread->fresh()->locked, 'Failed asserting that the thread was locked.');
+        $this->assertTrue(!! $thread->fresh()->locked);
     }
 
     public function test_non_administrator_may_not_lock_threads()
