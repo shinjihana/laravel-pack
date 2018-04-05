@@ -20,7 +20,7 @@ class LockThreadsTest extends TestCase
 
         $this->post(route('locked-threads.store', $thread)); 
 
-        $this->assertTrue(!! $thread->fresh()->locked);
+        $this->assertTrue($thread->fresh()->locked);
     }
 
     public function test_non_administrator_may_not_lock_threads()
@@ -33,6 +33,6 @@ class LockThreadsTest extends TestCase
 
         $this->post(route('locked-threads.store', $thread))->assertStatus(403);
 
-        $this->assertFalse(!! $thread->fresh()->locked);
+        $this->assertFalse($thread->fresh()->locked);
     }
 }

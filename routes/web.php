@@ -30,6 +30,7 @@ Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store');
 Route::delete('/threads/{channel}/{thread}', 'ThreadsController@destroy');
 
 Route::post('locked-threads/{thread}', 'LockedThreadsController@store')->name('locked-threads.store')->middleware('admin');
+Route::delete('locked-threads/{thread}', 'LockedThreadsController@store')->name('locked-threads.destroy')->middleware('admin');
 /** ============== Processing Reply ============== */
     /**------- Favorite processing ----------*/
 Route::post('/replies/{reply}/favorites', 'FavoritesController@store');
