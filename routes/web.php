@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 /** Processing Threads */
 Route::get('/threads', 'ThreadsController@index')->name('threads');;
 Route::get('/threads/create', 'ThreadsController@create');
+Route::patch('threads/{channel}/{thread}', 'ThreadsController@update');
 Route::get('/threads/{channel}/{thread}', 'ThreadsController@show');
 
 Route::post('/threads', 'ThreadsController@store')->middleware('must-be-confirmed');
