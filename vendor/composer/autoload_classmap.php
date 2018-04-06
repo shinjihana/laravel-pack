@@ -841,6 +841,7 @@ return array(
     'Happy\\ThreadMan\\Policies\\UserPolicy' => $baseDir . '/happy/thread-man/src/Policies/UserPolicy.php',
     'Happy\\ThreadMan\\RecordsActivity' => $baseDir . '/happy/thread-man/src/Models/RecordsActivity.php',
     'Happy\\ThreadMan\\Reply' => $baseDir . '/happy/thread-man/src/Models/Reply.php',
+    'Happy\\ThreadMan\\Rules\\Recaptcha' => $baseDir . '/happy/thread-man/src/Rules/Recaptcha.php',
     'Happy\\ThreadMan\\Rules\\SpamFree' => $baseDir . '/happy/thread-man/src/Rules/SpamFree.php',
     'Happy\\ThreadMan\\ServiceProvider' => $baseDir . '/happy/thread-man/ServiceProvider.php',
     'Happy\\ThreadMan\\Thread' => $baseDir . '/happy/thread-man/src/Models/Thread.php',

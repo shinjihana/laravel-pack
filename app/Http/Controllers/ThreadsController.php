@@ -6,7 +6,7 @@ use Happy\ThreadMan\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
-use Zttp\Zttp;
+use Happy\ThreadMan\Rules\Recaptcha;
 // use Illuminate\Support\Facades\Redis;
 
 use Happy\ThreadMan\Channel;
@@ -60,23 +60,14 @@ class ThreadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Recaptcha $recaptcha)
     {
         request()->validate([
             'title'         => 'required',
             'body'          => ['required', new SpamFree],
             'channel_id'    => 'required|exists:channels,id',
+            'g-recaptcha-response' => ['required', $recaptcha]
         ]);
-
-        $response = Zttp::asFormParams()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret'    => config('services.recaptcha.secret'),
-            'response'  => $request->input('g-recaptcha-response'),
-            'remoteip'  => request()->ip()
-        ]);
-
-        if (! $response->json()['success']) {
-            throw new \Exception('Recaptcha failed');
-        }
 
         $thread = Thread::create([
             'user_id'        => auth()->id(),

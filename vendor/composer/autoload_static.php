@@ -1211,6 +1211,7 @@ class ComposerStaticInitb8469244d10f1461b985e96c7cf94429
         'Happy\\ThreadMan\\Policies\\UserPolicy' => __DIR__ . '/../..' . '/happy/thread-man/src/Policies/UserPolicy.php',
         'Happy\\ThreadMan\\RecordsActivity' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/RecordsActivity.php',
         'Happy\\ThreadMan\\Reply' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Reply.php',
+        'Happy\\ThreadMan\\Rules\\Recaptcha' => __DIR__ . '/../..' . '/happy/thread-man/src/Rules/Recaptcha.php',
         'Happy\\ThreadMan\\Rules\\SpamFree' => __DIR__ . '/../..' . '/happy/thread-man/src/Rules/SpamFree.php',
         'Happy\\ThreadMan\\ServiceProvider' => __DIR__ . '/../..' . '/happy/thread-man/ServiceProvider.php',
         'Happy\\ThreadMan\\Thread' => __DIR__ . '/../..' . '/happy/thread-man/src/Models/Thread.php',

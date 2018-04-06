@@ -37,7 +37,7 @@ class Thread extends Model
             // });
         });
 
-        static::created(function($thread) {
+        static::created(function ($thread) {
             $thread->update(['slug' => $thread->title]);
         });
     }
@@ -152,7 +152,7 @@ class Thread extends Model
         if (static::whereSlug($slug = str_slug($value))->exists()) {
             $slug = "{$slug}-{$this->id}";
         }
-
+        
         $this->attributes['slug'] = $slug;
     }
 
