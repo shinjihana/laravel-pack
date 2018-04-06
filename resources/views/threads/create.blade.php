@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('header')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -43,6 +47,9 @@
                             @endforeach
                         </ul>
                         @endif
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6LdJZFEUAAAAAPJAse33fKgjZVt8jrzcBmwIpFS1"></div>
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
